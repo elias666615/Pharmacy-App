@@ -8,6 +8,7 @@ export default function Choose(props) {
 
     return (
         <SafeAreaView style={styles.group}>
+            <StatusBar style="auto" />
 
             <View style={styles.flex}>
                 <StatusBar backgroundColor='#fff' barStyle="dark-content" />

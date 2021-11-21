@@ -2,32 +2,31 @@
 import { View, StyleSheet, Text, Image, ImageBackground, StatusBar, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, onPress, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react';
-
 export default function Login(props) {
-    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword";
+    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword", screen2 = "HomePage";
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
 
     const LogIn = async () => {
 
         try {
-         const response = await fetch('http://10.0.2.2:8000/auth/login/', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-            })
-         });
-         const json = await response.json();
-         console.log(json)
-       } catch (error) {
-         console.error(error);
-       }
-     }
+            const response = await fetch('http://10.0.2.2:8000/auth/login/', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                })
+            });
+            const json = await response.json();
+            console.log(json)
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
     return (
@@ -35,6 +34,7 @@ export default function Login(props) {
         <KeyboardAvoidingView behavior={"height"} style={{ flex: 1 }}>
             <ScrollView style={{ flex: 1 }} bounce={false}>
                 < SafeAreaView style={[styles.group]}>
+                    <StatusBar style="auto" />
                     <View style={[styles.flex]}>
 
                         <StatusBar backgroundColor='#fff' barStyle="dark-content" />
@@ -44,8 +44,6 @@ export default function Login(props) {
                                 <Image source={require('../assets/images/login.png')}></Image>
                             </View>
                         </View>
-
-
                         {/**-----------------------------------------------------------------------Login Text-----------------------------------------------------------------------*/}
                         <View style={styles.flex_row}>
                             <View style={[styles.login_box]}>
@@ -55,7 +53,13 @@ export default function Login(props) {
                             </View>
                         </View>
 
-
+                        <TouchableOpacity onPress={() => navigation.navigate(screen2)}>
+                            <View style={styles.flex2_col2}>
+                                <Text style={styles.small_text_body}>
+                                    {'Home'}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
                         {/**-----------------------------------------------------------------------Email field-----------------------------------------------------------------------*/}
                         <View style={styles.flex_row}>
                             <View style={[styles.flex1]}>
