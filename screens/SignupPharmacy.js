@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function SignupPharmacy(props) {
 
-    const navigation = useNavigation(), screen = "Login", screen1 = "Verificationcode", home = "HomePage";
+    const navigation = useNavigation(), screen = "Login", screen1 = "Verificationcode", login = "Login";
     const [name, setname] = useState('');
     const [phone, setphone] = useState('');
     const [email, setemail] = useState('');
@@ -37,17 +37,18 @@ export default function SignupPharmacy(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    storename: name,
+                    location: location,
                     email: email,
                     password: password,
                     phone_number: phone,
                     name: name,
                     location: location,
-                    role: 'BYR',
+                    role: 'SLR',
                 })
             });
-            const json = await response.json();
-            console.log(json)
-            navigation.navigate(home)
+            // const json = await response.json();
+            navigation.navigate(login)
         } catch (error) {
             console.error(error);
         }
@@ -60,7 +61,6 @@ export default function SignupPharmacy(props) {
             return false;
         }
         else return true;
-
     }
 
     function validation() {

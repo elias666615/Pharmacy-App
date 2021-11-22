@@ -2,8 +2,12 @@
 import { View, StyleSheet, Text, Image, ImageBackground, StatusBar, TouchableWithoutFeedback, SafeAreaView, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, onPress, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react';
+import HomePageSeller from './HomePageSeller';
+import UserDataManager from '../services/UserDataManager';
+import Store from '../models/userModels';
 export default function Login(props) {
-    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword", screen2 = "HomePage";
+    const userDataManager = UserDataManager.getInstance()
+    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword", home = "HomePageSeller";
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
 
@@ -22,7 +26,25 @@ export default function Login(props) {
                 })
             });
             const json = await response.json();
-            console.log(json)
+            userDataManager.setUserEmail(json['email'])
+            fetchStoreInfo(json['email'])
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async function fetchStoreInfo(user_email) {
+        try {
+            const response = await fetch(`http://10.0.2.2:8000/auth/stores/?user=${user_email}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+            const json = await response.json();
+            userDataManager.setStore(new Store(json['id'], json['name'], json['location']));
+            navigation.navigate(home)
         } catch (error) {
             console.error(error);
         }
