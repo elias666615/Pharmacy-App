@@ -24,7 +24,7 @@ export default function Verification(props) {
             <View style={styles.group}>
                 <View style={styles.flex}>
 
-                    <StatusBar backgroundColor='#fff' barStyle="dark-content" />
+                    <StatusBar style="auto" />
 
                     <View style={styles.flex_row}>
                         <View>

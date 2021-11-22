@@ -1,10 +1,10 @@
 import React from 'react';
-import {StyleSheet, text, View, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, text, View, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from './Home';
+import Home from './HomePageSeller';
 import Messages from './Messages';
 import orders from './orders';
-import profile from './profile';
+import ProfileSeller from './ProfileSeller';
 import add from './add';
 
 const Tab = createBottomTabNavigator();
@@ -13,65 +13,68 @@ const Tab = createBottomTabNavigator();
 
 const HomePage = () => {
     return (
-        <Tab.Navigator screenOptions={{tabBarShowLabel: false, headerShown: false, tabBarStyle: {
-        position: 'absolute',    
-        elevation: 0, 
-        backgroundColor: '#fff', 
-        borderRadius: 15, 
-        height: 90,
-        }}}>
+        <Tab.Navigator screenOptions={{
+            tabBarShowLabel: false, tabBarHideOnKeyboard: true, headerShown: false, tabBarStyle: {
+                position: 'absolute',
+                elevation: 0,
+                backgroundColor: '#fff',
+                flex: 1,
+                borderRadius: 15,
+                height: 90,
+            }
+        }}>
 
 
             <Tab.Screen name="Home" component={Home} options={{
                 tabBarButton: props => <TouchableOpacity {...props} />,
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent: 'center', top: 10}}>
-                    <Image source={require('../assets/home.png')} resizeMode='contain' style={{width:35, height:35}}/>
-                    </View>                
+                tabBarIcon: ({ focused }) => (
+                    <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+                        <Image source={require('../assets/images/home.png')} resizeMode='contain' style={{ width: 35, height: 35 }} />
+                    </View>
                 ),
-            }}/>
+            }} />
 
 
-            <Tab.Screen name="orders" component={orders} options={{ 
+            <Tab.Screen name="orders" component={orders} options={{
                 tabBarButton: props => <TouchableOpacity {...props} />,
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent: 'center', top: 10}}>
-                    <Image source={require('../assets/orders.png')} resizeMode='contain' style={{width:35, height:35}}/>
-                    </View>                
+                tabBarIcon: ({ focused }) => (
+                    <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+                        <Image source={require('../assets/images/orders.png')} resizeMode='contain' style={{ width: 35, height: 35 }} />
+                    </View>
                 ),
-            }}/>
+            }} />
 
-            
+
             <Tab.Screen name="add" component={add} options={{
-                tabBarButton: props => <TouchableOpacity {...props} style={{ justifyContent: 'center', alignItems: 'center', ...styles.shadow, paddingLeft: 50, paddingRight: 50}}/>,
-                
-                tabBarIcon: ({focused}) => (
-                <View style={{width: 60, height: 60, borderRadius: 35, backgroundColor: '#00C6FB'}}>
-                <Image source={require('../assets/plus.png')} resizeMode='contain' style={{width:35, height:35, paddingRight: 60, marginTop: 13}}/>
-                </View> 
+                tabBarButton: props => <TouchableOpacity {...props} style={{ justifyContent: 'center', alignItems: 'center', ...styles.shadow, paddingLeft: 50, paddingRight: 50 }} />,
+
+                tabBarIcon: ({ focused }) => (
+                    <View style={{ width: 60, height: 60, borderRadius: 35, backgroundColor: '#00C6FB' }}>
+                        <Image source={require('../assets/images/plus.png')} resizeMode='contain' style={{ width: 35, height: 35, paddingRight: 60, marginTop: 13 }} />
+                    </View>
                 )
-            }}/>
-            
+            }} />
+
 
             <Tab.Screen name="Messages" component={Messages} options={{
                 tabBarButton: props => <TouchableOpacity {...props} />,
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent: 'center', top: 10}}>
-                    <Image source={require('../assets/message.png')} resizeMode='contain' style={{width:35, height:35}}/>
-                    </View>                
+                tabBarIcon: ({ focused }) => (
+                    <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+                        <Image source={require('../assets/images/message.png')} resizeMode='contain' style={{ width: 35, height: 35 }} />
+                    </View>
                 ),
-            }}/>
+            }} />
 
 
-            <Tab.Screen name="profile" component={profile} options={{
+            <Tab.Screen name="ProfileSeller" component={ProfileSeller} options={{
                 tabBarButton: props => <TouchableOpacity {...props} />,
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems:'center', justifyContent: 'center', top: 10}}>
-                    <Image source={require('../assets/profile.png')} resizeMode='contain' style={{width:35, height:35}}/>
-                    </View>                
+                tabBarIcon: ({ focused }) => (
+                    <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
+                        <Image source={require('../assets/images/profile.png')} resizeMode='contain' style={{ width: 35, height: 35 }} />
+                    </View>
                 ),
-            }}/>
-            
+            }} />
+
 
         </Tab.Navigator>
     );

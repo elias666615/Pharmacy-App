@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function SignupPharmacy(props) {
 
-    const navigation = useNavigation(), screen = "Login", screen1 = "Verificationcode", home="HomePage";
+    const navigation = useNavigation(), screen = "Login", screen1 = "Verificationcode", home = "HomePage";
     const [name, setname] = useState('');
     const [phone, setphone] = useState('');
     const [email, setemail] = useState('');
@@ -22,7 +22,7 @@ export default function SignupPharmacy(props) {
     const [locationerror, setlocationerror] = useState('');
 
     const SignUp = async () => {
-        
+
         validation()
 
         if (password != repassword) {
@@ -30,28 +30,28 @@ export default function SignupPharmacy(props) {
         }
 
         try {
-         const response = await fetch('http://10.0.2.2:8000/auth/register/', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-              phone_number: phone,
-              name: name,
-              location: location,
-              role: 'BYR',
-            })
-         });
-         const json = await response.json();
-         console.log(json)
-         navigation.navigate(home)
-       } catch (error) {
-         console.error(error);
-       }
-     }
+            const response = await fetch('http://10.0.2.2:8000/auth/register/', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    phone_number: phone,
+                    name: name,
+                    location: location,
+                    role: 'BYR',
+                })
+            });
+            const json = await response.json();
+            console.log(json)
+            navigation.navigate(home)
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     function validateEmail(text) {
         console.log(text);
@@ -105,8 +105,9 @@ export default function SignupPharmacy(props) {
         <KeyboardAvoidingView behavior={"height"} style={{ flex: 1 }}>
             <ScrollView>
                 < SafeAreaView style={[styles.group]}>
+
                     <View style={styles.flex}>
-                        <StatusBar backgroundColor='#fff' barStyle="dark-content" />
+                        <StatusBar style="auto" />
 
                         {/**-----------------------------------------------------------------------Sign Up text-----------------------------------------------------------------------*/}
                         <View style={styles.flex_row}>

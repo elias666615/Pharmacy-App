@@ -8,6 +8,7 @@ export default function Reset(props) {
 
     return (
         < SafeAreaView style={[styles.group]}>
+            <StatusBar style="auto" />
 
             <ScrollView>
                 <KeyboardAvoidingView behavior={"position"} style={{ flex: 1 }}>
