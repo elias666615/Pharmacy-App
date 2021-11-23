@@ -10,7 +10,8 @@ import Forgotpassword from './screens/Forgotpassword'
 import Verificationcode from './screens/Verificationcode'
 import HomePage from './screens/HomePage'
 import HomePageSeller from './screens/HomePageSeller'
-
+import add from './screens/add'
+import EditProduct from './screens/EditProduct'
 
 const Stack = createNativeStackNavigator()
 
@@ -28,6 +29,8 @@ export default function App() {
         <Stack.Screen name="Verificationcode" component={Verificationcode} />
         <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="HomePageSeller" component={HomePageSeller} />
+        <Stack.Screen name="add" component={add} />
+        <Stack.Screen name="EditProduct" component={EditProduct} />
 
 
       </Stack.Navigator>

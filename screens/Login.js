@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image, ImageBackground, StatusBar, TouchableWit
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react';
 export default function Login(props) {
-    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword", screen2 = "HomePage";
+    const navigation = useNavigation(), screen = "Choose", screen1 = "Forgotpassword", screen2 = "EditProduct";
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
 
