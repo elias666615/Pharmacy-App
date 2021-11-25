@@ -21,6 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './seller/add-product/add-product.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     NavigationComponent,
     ProductComponent,
     StarRatingComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSelectModule,
     MatButtonModule,
     MatSidenavModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

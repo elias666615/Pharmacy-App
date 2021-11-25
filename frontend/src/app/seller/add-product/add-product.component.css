@@ -1,0 +1,16 @@
+.container{
+    padding: 20px ;
+    font-size:18px;
+    height: 110vh
+}
+
+.formField{
+    width:100%;
+    margin-top: 15px;
+}
+
+.add-button{
+    background-color: red;
+    font-size: 18px;
+    color: white;
+}
