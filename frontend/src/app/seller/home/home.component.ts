@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   show: boolean = true;
-  searchValue: string = "fadfa";
+  searchValue: string = "";
   products: Product[] = [
     new Product(1, "panadol", "blabla", "afdfa", 20000, 0, 3.3, [], []),
     new Product(1, "advil", "blabla", "afdfa", 400000, 0, 4.5, [], []),
@@ -19,9 +19,16 @@ export class HomeComponent implements OnInit {
     new Product(1, "cocaine", "blabla", "afdfa", 280000, 0, 3.3, [], []),
     new Product(1, "mushrooms", "blabla", "afdfa", 670000, 45, 2.9, [], []),]; 
 
+  add_drawer_open: boolean = false;
+  update_drawer_open: boolean = false;
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleAddDrawer() {
+    this.add_drawer_open = !this.add_drawer_open;
   }
 
 }
