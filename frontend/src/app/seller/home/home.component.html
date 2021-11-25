@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="container">
+    <div class="top-bar">
+        <mat-form-field appearance="standard" class="search_field">
+            <input matInput placeholder="Search for product" type="text" [(ngModel)]="searchValue">
+            <button class="close_button" *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="select_field">
+            <mat-label>Sort by</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="select_field">
+            <mat-label>Category</mat-label>
+            <mat-select>
+              <mat-option value="one">First optdgdfgsdfgdfgfdgdfsgdfgsdgddgfion</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="select_field">
+            <mat-label>Type</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="add_product_button">Add Product</button>
+    </div>
+    <div class="product-container">
+        <div *ngFor="let product of products" class="product-card">
+            <product [product]="product"></product>
+        </div>
+    </div>
+</div>
