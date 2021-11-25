@@ -1,10 +1,12 @@
-<mat-card class="example-card">
+<mat-card class="container">
     <img class="product_image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <mat-card-title class="product-name">{{ product.name }}</mat-card-title>
-      <mat-card-subtitle class="product-price">{{ product.price }} LBP</mat-card-subtitle>
+      <mat-card-subtitle class="product-price">
+        <span *ngIf="price" class="discounted_price">{{ price }} LBP</span>
+        <span [ngClass]="{'crossed': price}">{{ product.price }} LBP</span>
+        <span *ngIf="price" class="discount">-{{ product.discount }}%</span>
+      </mat-card-subtitle>
       <app-star-rating [rating]="product.rating"></app-star-rating>
     </mat-card-content>
-    <mat-card-actions>
-    </mat-card-actions>
   </mat-card>
