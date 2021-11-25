@@ -34,8 +34,12 @@ export interface Category {
     description: string;
 }
 
-export interface SubCategory {
+export class SubCategory {
     id: number;
-    category: Category;
     description: string;
+
+    constructor(id: number, description: string) {
+        this.id = id;
+        this.description = description;
+    }
 }
