@@ -1,3 +1,17 @@
-<h1>Login Page</h1>
+<div class="container">
+    <Label class="login-title">Login</Label>
+    <form [formGroup]="loginForm" class="formContainer">
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" type="email" ngModel [email]="true">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" formControlName="password" type="password">
+        </mat-form-field>
+        <br />
+        <button class="login-button" mat-raised-button>Login</button>
 
-<li><a routerLink="/seller" routerLinkActive="active">login</a></li>
+    </form>
+</div>
