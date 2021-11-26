@@ -5,12 +5,19 @@
             <input matInput placeholder="Name" formControlName="name">
         </mat-form-field>
         <br />
-        <mat-form-field class="formField" appearance="fill">
+        <mat-form-field class="formField" appearance="standard">
             <mat-label>Description</mat-label>
             <textarea matInput placeholder="Description" formControlName="description"></textarea>
         </mat-form-field>
         <br />
-        <input type="file" />
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let type of types" [value]="type.id">{{ type.title }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <input type="file" formControlName="image"/>
         <mat-form-field class="formField" appearance="standard">
             <mat-label>Price</mat-label>
             <input matInput type="number" placeholder="20000 LBP" formControlName="price" min="0">
@@ -26,28 +33,45 @@
             <input matInput type="number" placeholder="0%" formControlName="discount" min="0">
         </mat-form-field>
         <br />
-        <mat-form-field class="formField" appearance="fill">
-            <mat-label>Categories</mat-label>
-            <mat-chip-list #chipList>
-                <mat-chip *ngFor="let category of categories" [selectable]="selectable" [removable]="removable"
-                    (removed)="remove(category)">
-                    {{category.description}}
-                    <button matChipRemove *ngIf="removable">
-                        <mat-icon>cancel</mat-icon>
-                    </button>
-                </mat-chip>
-                <input placeholder="New category..." #categoryInput [formControl]="categoryCtrl"
-                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
-                    {{category.description}}
-                </mat-option>
-            </mat-autocomplete>
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Categories</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option *ngFor="let category of allCategories" [value]="category.id">{{category.description}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <br />
-        <button class="add-button" mat-raised-button>Add</button>
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Tags</mat-label>
+          <mat-chip-list #chipList>
+            <mat-chip
+              *ngFor="let tag of tags"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="removeTag(tag)">
+              {{tag.description}}
+              <button matChipRemove *ngIf="removable">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="search tag..."
+              #tagInput
+              [formControl]="tagCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addTag($event)"
+              (keydown)="_filterTag(tagInput.value)"
+              (focus)="_filterTag(tagInput.value)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedTag($event)">
+            <mat-option *ngFor="let tag of filteredTags" [value]="tag">
+              {{tag.description}}
+            </mat-option>
+          </mat-autocomplete>
+      </mat-form-field>
+      <br />
+        <button class="add-button" mat-raised-button (click)="addProduct()">Add</button>
 
     </form>
 </div>

@@ -1,30 +1,33 @@
-export class Product {
+export interface Product {
     id: number;
     name: string;
     description: string;
-    images: string;
-    price: number;
+    image: string;
+    price_per_unit: number;
     discount: number;
     rating: number;
-    tags: Tags[];
-    categories: SubCategory[];
+    tags: number[];
+    categories: number[];
+    initial_quantity: number;
+    type: number;
+}
 
-    constructor(id: number, name: string, description: string, images: string, price: number, discount: number, rating: number, tags: Tags[], categories: SubCategory[]) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.images = images;
-        this.price = price;
-        this.discount = discount;
-        this.rating = rating;
-        this.tags = tags;
-        this.categories = categories;
-    }
+export interface AddProduct {
+    name: string;
+    store: number;
+    description: string;
+    image: string;
+    price_per_unit: number;
+    discount: number;
+    tags: number[];
+    categories: number[];
+    initial_quantity: number;
+    type: number;
 }
 
 
 
-export interface Tags {
+export interface Tag {
     id: number;
     description: string;
 }
@@ -34,12 +37,13 @@ export interface Category {
     description: string;
 }
 
-export class SubCategory {
+export interface SubCategory {
     id: number;
     description: string;
+}
 
-    constructor(id: number, description: string) {
-        this.id = id;
-        this.description = description;
-    }
+export interface Type {
+    id: number;
+    title: string;
+    description: string;
 }

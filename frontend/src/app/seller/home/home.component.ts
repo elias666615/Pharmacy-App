@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../shared/models/productmodels';
+import { Product, SubCategory, Type } from '../../shared/models/productmodels';
 import { FormControl } from '@angular/forms';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { LookupsService } from 'src/app/shared/services/lookups.service';
 
 @Component({
   selector: 'app-home',
@@ -8,27 +10,42 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  show: boolean = true;
   searchValue: string = "";
-  products: Product[] = [
-    new Product(1, "panadol", "blabla", "afdfa", 20000, 0, 3.3, [], []),
-    new Product(1, "advil", "blabla", "afdfa", 400000, 0, 4.5, [], []),
-    new Product(1, "xanax", "blabla", "afdfa", 300000, 50, 50, [], []),
-    new Product(1, "aspirin", "blabla", "afdfa", 1000000, 25, 1.2, [], []),
-    new Product(1, "viagra", "blabla", "afdfa", 3450000, 20, 4.9, [], []),
-    new Product(1, "cocaine", "blabla", "afdfa", 280000, 0, 3.3, [], []),
-    new Product(1, "mushrooms", "blabla", "afdfa", 670000, 45, 2.9, [], []),]; 
+  typeValue: string = "";
+  categoryValue: string = "";
+  sortValue: string = "name";
 
+  products: Product[] = []; 
+  subcategories: SubCategory[] = [];
+  types: Type[] = [];
+
+  filteredProducts: Product[] = this.products;
   add_drawer_open: boolean = false;
   update_drawer_open: boolean = false;
   
-  constructor() { }
+  constructor(
+    private productService: ProductService,
+    private lookupsService: LookupsService) { }
 
   ngOnInit(): void {
+    this.fetchProducts(2);
+    this.fetchLookups();
+    console.log(this.products)
   }
 
   toggleAddDrawer() {
     this.add_drawer_open = !this.add_drawer_open;
   }
 
+  filterProducts() {
+  }
+
+  fetchProducts(store_id: number) {
+    this.productService.getSellerProducts(store_id).subscribe((data: Product[]) => this.products = data);
+  }
+
+  fetchLookups() {
+    this.lookupsService.fetchSubCategories().subscribe((data: SubCategory[]) => this.subcategories = data);
+    this.lookupsService.fetchTypes().subscribe((data: Type[]) => this.types = data);
+  }
 }
