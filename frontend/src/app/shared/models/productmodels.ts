@@ -2,7 +2,7 @@ export interface Product {
     id: number;
     name: string;
     description: string;
-    image: string;
+    image: any;
     price_per_unit: number;
     discount: number;
     rating: number;
@@ -16,7 +16,7 @@ export interface AddProduct {
     name: string;
     store: number;
     description: string;
-    image: string;
+    image: any;
     price_per_unit: number;
     discount: number;
     tags: number[];

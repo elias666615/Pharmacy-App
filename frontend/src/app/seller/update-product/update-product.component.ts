@@ -1,26 +1,25 @@
+import { COMMA, ENTER, L } from '@angular/cdk/keycodes';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Product, SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
 import { LookupsService } from 'src/app/shared/services/lookups.service';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { AddProduct, Product } from 'src/app/shared/models/productmodels';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  selector: 'app-update-product',
+  templateUrl: './update-product.component.html',
+  styleUrls: ['./update-product.component.css']
 })
-export class AddProductComponent implements OnInit {
+export class UpdateProductComponent implements OnInit {
 
+  @Input() product!: Product;
   @Input() types!: Type[];
   @Input() allCategories!: SubCategory[];
   allTags: Tag[] = [];
 
-  @Output() productAdded = new EventEmitter<Product>();
+  @Output() productUpdated = new EventEmitter<Product>();
 
   productForm = this.fb.group({
     name: [''],
@@ -46,11 +45,35 @@ export class AddProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lookupsService: LookupsService,
-    private productService: ProductService,) {
-  }
+    private productService: ProductService,
+  ) { }
 
   ngOnInit(): void {
     this.fetchTags();
+  }
+
+  initializeForm() {
+    console.log(this.product.type);
+
+    this.productForm.controls['name'].setValue(this.product.name);
+    this.productForm.controls['description'].setValue(this.product.description);
+    this.productForm.controls['categories'].setValue(this.product.categories);
+    this.productForm.controls['discount'].setValue(this.product.discount);
+    this.productForm.controls['price'].setValue(this.product.price_per_unit);
+    this.productForm.controls['quantity'].setValue(this.product.initial_quantity);
+    this.productForm.controls['type'].setValue(this.product.type);
+
+    for(let i = 0; i < this.product.tags.length; i++) {
+      let tag = this.allTags.find(tag => tag.id === this.product.tags[i]);
+      let idx = undefined;
+      if(tag != undefined) {
+        idx = this.allTags.indexOf(tag);
+        if(idx > -1) {
+          this.tags.push(tag);
+          this.allTags.splice(idx, 1);
+        }
+      }
+    }
   }
 
   addCategory(event: MatChipInputEvent): void {
@@ -98,13 +121,15 @@ export class AddProductComponent implements OnInit {
   }
 
   fetchTags() {
-    this.lookupsService.fetchTags().subscribe((data: Tag[]) => this.allTags = data);
+    this.lookupsService.fetchTags().subscribe((data: Tag[]) => {this.allTags = data, this.initializeForm();});
   }
 
-  addProduct() {
+  updateProduct() {
     if (this.productForm.valid) {
       let _tags: number[] = [];
       this.tags.forEach(tag => _tags.push(tag.id as number));
+      console.log(_tags);
+      console.log(this.imageUrl);
       // const creationParameters: AddProduct = {
       //   name: this.productForm.controls['name'].value,
       //   description: this.productForm.controls['description'].value,
@@ -118,9 +143,8 @@ export class AddProductComponent implements OnInit {
       //   store: 2,
       // }
 
-      console.log(this.productForm.controls['type'].value);
-
       const creationForm = new FormData();
+      creationForm.append('id', JSON.stringify(this.product.id));
       creationForm.append('name', this.productForm.controls['name'].value);
       creationForm.append('description', this.productForm.controls['description'].value);
       creationForm.append('price_per_unit', this.productForm.controls['price'].value);
@@ -133,7 +157,7 @@ export class AddProductComponent implements OnInit {
       creationForm.append('store', JSON.stringify(2));
 
 
-      this.productService.addProduct(creationForm).subscribe((data: Product) => this.productAdded.emit(data));
+      this.productService.updateProduct(creationForm).subscribe((data: Product) => this.productUpdated.emit(data));
     }
   }
 
@@ -157,5 +181,5 @@ export class AddProductComponent implements OnInit {
       //this.imageUrl = reader.result;
     };
   }
-}
 
+}

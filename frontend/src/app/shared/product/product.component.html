@@ -9,5 +9,6 @@
         <span *ngIf="price" class="discount">-{{ product.discount }}%</span>
       </mat-card-subtitle>
       <app-star-rating [rating]="product.rating"></app-star-rating>
+      <button mat-raised-button (click)="updateClicked.emit(product)">Update</button>
     </mat-card-content>
   </mat-card>

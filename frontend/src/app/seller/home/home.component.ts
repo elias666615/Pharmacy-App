@@ -3,11 +3,25 @@ import { Product, SubCategory, Type } from '../../shared/models/productmodels';
 import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { LookupsService } from 'src/app/shared/services/lookups.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('drawerOpenClose', [
+      state ('drawer-open', style ({
+        right: '0'
+      })),
+      state ('drawer-closed', style({
+        right: '-600px'
+      })),
+      transition('drawer-closed => drawer-open', animate('0.2s')),
+      transition('drawer-open => drawer-closed', animate('0.2s')),
+    ]),
+  ]
 })
 export class HomeComponent implements OnInit {
   searchValue: string = "";
@@ -15,17 +29,20 @@ export class HomeComponent implements OnInit {
   categoryValue: string = "";
   sortValue: string = "name";
 
+  productToUpdate: Product | undefined;
+
   products: Product[] = []; 
   subcategories: SubCategory[] = [];
   types: Type[] = [];
 
-  filteredProducts: Product[] = this.products;
+  filteredProducts: Product[] = [];
   add_drawer_open: boolean = false;
   update_drawer_open: boolean = false;
   
   constructor(
     private productService: ProductService,
-    private lookupsService: LookupsService) { }
+    private lookupsService: LookupsService,
+    private _snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
     this.fetchProducts(2);
@@ -38,14 +55,42 @@ export class HomeComponent implements OnInit {
   }
 
   filterProducts() {
+    if(this.searchValue === '' || this.searchValue === null) {
+      this.filteredProducts = this.products;
+    }
+    else {
+      this.filteredProducts = this.products.filter(product => product.name.toLowerCase().includes(this.searchValue.toLowerCase()));
+    }
   }
 
   fetchProducts(store_id: number) {
-    this.productService.getSellerProducts(store_id).subscribe((data: Product[]) => this.products = data);
+    this.productService.getSellerProducts(store_id).subscribe((data: Product[]) => {this.products = data, this.filteredProducts = data} );
   }
 
   fetchLookups() {
     this.lookupsService.fetchSubCategories().subscribe((data: SubCategory[]) => this.subcategories = data);
     this.lookupsService.fetchTypes().subscribe((data: Type[]) => this.types = data);
+  }
+
+  addProduct(product: Product) {
+    this.products.push(product);
+    this.add_drawer_open = false;
+    this._snackBar.open("Product successfully added","Okay", {duration: 5000});
+  }
+
+  updateProduct(product: Product) {
+    console.log('test');
+    this.productToUpdate = product;
+    this.add_drawer_open = false;
+    this.update_drawer_open = true;
+  }
+
+  closeUpdateDrawer() {
+    this.update_drawer_open = false;
+  }
+
+  productUpdated(product: Product) {
+    this.update_drawer_open = false;
+    this.fetchProducts(2);
   }
 }

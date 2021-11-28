@@ -17,7 +17,11 @@ export class ProductService {
     return this.http.get<Product[]>(this.productUrl + '?store_id=' + store_id.toString());
   }
 
-  addProduct(body: AddProduct) {
-    return this.http.post<Product>('http://127.0.0.1:8000/store/products/', body);
+  addProduct(formData: FormData) {
+    return this.http.post<Product>('http://127.0.0.1:8000/store/products/', formData);
+  }
+
+  updateProduct(formData: FormData) {
+    return this.http.put<Product>('http://127.0.0.1:8000/store/products/', formData);
   }
 }
