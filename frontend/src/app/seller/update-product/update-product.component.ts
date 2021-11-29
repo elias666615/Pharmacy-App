@@ -1,6 +1,6 @@
 import { COMMA, ENTER, L } from '@angular/cdk/keycodes';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Product, SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
@@ -20,15 +20,16 @@ export class UpdateProductComponent implements OnInit {
   allTags: Tag[] = [];
 
   @Output() productUpdated = new EventEmitter<Product>();
+  @Output() drawerClosed = new EventEmitter<boolean>();
 
   productForm = this.fb.group({
-    name: [''],
-    description: [''],
-    price: [''],
-    discount: ['0'],
-    quantity: [''],
-    categories: [''],
-    type: [''],
+    name: ['', [Validators.required, Validators.maxLength(100)]],
+    description: ['', Validators.required],
+    price: ['', [Validators.required, Validators.min(0), Validators.max(100000000)]],
+    discount: ['0', [Validators.required, Validators.min(0), Validators.max(100)]],
+    quantity: ['', [Validators.required, Validators.min(0), Validators.max(1000000000)]],
+    categories: ['', Validators.required],
+    type: ['', Validators.required],
   });
 
   imageUrl!: any;
@@ -41,6 +42,9 @@ export class UpdateProductComponent implements OnInit {
   tags: Tag[] = [];
   filteredTags: Tag[] = this.allTags;
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('fileBrowseRef') fileBrowseRef: any;
+  imageFileName: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -180,6 +184,10 @@ export class UpdateProductComponent implements OnInit {
     reader.onload = (_event) => {
       //this.imageUrl = reader.result;
     };
+  }
+
+  browseImage() {
+    this.fileBrowseRef.nativeElement.click();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -21,15 +21,16 @@ export class AddProductComponent implements OnInit {
   allTags: Tag[] = [];
 
   @Output() productAdded = new EventEmitter<Product>();
+  @Output() drawerClosed = new EventEmitter<boolean>();
 
   productForm = this.fb.group({
-    name: [''],
-    description: [''],
-    price: [''],
-    discount: ['0'],
-    quantity: [''],
-    categories: [''],
-    type: [''],
+    name: ['', [Validators.required, Validators.maxLength(100)]],
+    description: ['', Validators.required],
+    price: ['', [Validators.required, Validators.min(0), Validators.max(100000000)]],
+    discount: ['0', [Validators.required, Validators.min(0), Validators.max(100)]],
+    quantity: ['', [Validators.required, Validators.min(0), Validators.max(1000000000)]],
+    categories: ['', Validators.required],
+    type: ['', Validators.required],
   });
 
   imageUrl!: any;

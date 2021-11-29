@@ -1,5 +1,5 @@
 .wrapper {
-    height: 76vh;
+    height: 77vh;
 }
 
 .header {
@@ -9,7 +9,7 @@
 }
 
 .header mat-icon {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .header span {
@@ -25,11 +25,12 @@
 }
 
 .sub-container {
-    margin: 50px 50px 20px 50px;
+    margin: 30px 50px 10px 50px;
 }
 
 .formField{
     width:100%;
+    margin-bottom: 10px;
     /* margin-top: 12px; */
 }
 
@@ -59,18 +60,18 @@
 
 /* mat-input error outline color */
 ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
-    color: red!important;
+    color: rgb(255, 50, 50)!important;
     opacity: 0.8!important;
 }
 
 /* mat-input caret color */
 ::ng-deep .mat-input-element {
-    caret-color: red!important;
+    caret-color: #1B9CE5!important;
 }
 
 /* mat-input error caret color */
 ::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
-    caret-color: red!important;
+    caret-color: rgb(255, 50, 50)!important;
 }
 
 /* mat-label normal state style */
@@ -86,7 +87,7 @@
 
 /* mat-label error style */
 ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-    color: red!important;
+    color: rgb(255, 50, 50)!important;
 }
 
 .file_input {
@@ -98,7 +99,7 @@
 
 .browse-button {
     font-size: 18px;
-    background-color: rgb(255, 34, 34);
+    background-color: #ffaa18;
     color: white;
     margin-right: 10px;
 }
@@ -113,3 +114,24 @@
     box-shadow: 0 -2px 2px rgba(197, 197, 197, 0.6);
     padding: 20px 50px 20px 50px;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

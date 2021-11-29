@@ -43,14 +43,12 @@
 
 <div [@drawerOpenClose]="add_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
     <div class="drawer_body">
-        <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="subcategories" (productAdded)="addProduct($event)"></app-add-product>
+        <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="subcategories" (productAdded)="addProduct($event)" (drawerClosed)="add_drawer_open=false"></app-add-product>
     </div>
 </div>
 
 <div [@drawerOpenClose]="update_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
-    <div class="drawer_content">
-        <div class="drawer_body">
-            <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="subcategories" [product]="productToUpdate!"></app-update-product>
-        </div>
+    <div class="drawer_body">
+        <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="subcategories" [product]="productToUpdate!" (drawerClosed)="update_drawer_open=false"></app-update-product>
     </div>
 </div>
