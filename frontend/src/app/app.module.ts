@@ -29,6 +29,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
+import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
     StarRatingComponent,
     AddProductComponent,
     UpdateProductComponent,
+    SignupBuyerComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,11 @@ import { NavigationComponent } from './seller/navigation/navigation.component';
 import { ProfileComponent } from './seller/profile/profile.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { HomeComponent } from './seller/home/home.component';
+import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'SignupBuyer', component: SignupBuyerComponent},
   { path: 'seller', component: NavigationComponent, 
     children: [
       { path: 'home', component: HomeComponent },
