@@ -43,6 +43,9 @@ export class AddProductComponent implements OnInit {
   filteredTags: Tag[] = this.allTags;
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
 
+  @ViewChild('fileBrowseRef') fileBrowseRef: any;
+  imageFileName: string = '';
+
   constructor(
     private fb: FormBuilder,
     private lookupsService: LookupsService,
@@ -149,6 +152,7 @@ export class AddProductComponent implements OnInit {
     }
 
     this.imageUrl = event.target.files[0];
+    this.imageFileName = event.target.files[0].name;
     console.log(event.target.files[0])
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
@@ -156,6 +160,10 @@ export class AddProductComponent implements OnInit {
     reader.onload = (_event) => {
       //this.imageUrl = reader.result;
     };
+  }
+
+  browseImage() {
+    this.fileBrowseRef.nativeElement.click();
   }
 }
 

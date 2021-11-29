@@ -1,5 +1,11 @@
-<div class="container">
+<div class="wrapper">
+  <div class="header">
+    <mat-icon>close</mat-icon>
+    <span class="drawer-title">Add Product</span>
+  </div>
+  <div class="container">
     <form [formGroup]="productForm">
+    <div class="sub-container">
         <mat-form-field class="formField" appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput placeholder="Name" formControlName="name">
@@ -16,62 +22,74 @@
             <mat-option *ngFor="let type of types" [value]="type.id">{{ type.title }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <br />
-        <input type="file" (change)="fileBrowserHandler($event)"/>
-        <mat-form-field class="formField" appearance="outline">
-            <mat-label>Price</mat-label>
-            <input accept="image/*" matInput type="number" placeholder="20000 LBP" formControlName="price" min="0">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="outline">
-            <mat-label>Quantity</mat-label>
-            <input matInput type="number" placeholder="100" formControlName="quantity" min="100">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="outline">
-            <mat-label>Discount</mat-label>
-            <input matInput type="number" placeholder="0%" formControlName="discount" min="0">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="outline">
-          <mat-label>Categories</mat-label>
-          <mat-select formControlName="categories" multiple>
-            <mat-option *ngFor="let category of allCategories" [value]="category.id">{{category.description}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="outline">
-          <mat-label>Tags</mat-label>
-          <mat-chip-list #chipList>
-            <mat-chip
-              *ngFor="let tag of tags"
-              [selectable]="selectable"
-              [removable]="removable"
-              (removed)="removeTag(tag)">
-              {{tag.description}}
-              <button matChipRemove *ngIf="removable">
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
-            <input
-              placeholder="search tag..."
-              #tagInput
-              [formControl]="tagCtrl"
-              [matAutocomplete]="auto"
-              [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              (matChipInputTokenEnd)="addTag($event)"
-              (keydown)="_filterTag(tagInput.value)"
-              (focus)="_filterTag(tagInput.value)">
-          </mat-chip-list>
-          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedTag($event)">
-            <mat-option *ngFor="let tag of filteredTags" [value]="tag">
-              {{tag.description}}
-            </mat-option>
-          </mat-autocomplete>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-container">
+      <mat-form-field class="formField" appearance="outline">
+        <mat-label>Price</mat-label>
+        <input accept="image/*" matInput type="number" placeholder="20000 LBP" formControlName="price" min="0">
+      </mat-form-field>
+     <br />
+      <mat-form-field class="formField" appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" placeholder="100" formControlName="quantity" min="100">
+     </mat-form-field>
+     <br />
+     <mat-form-field class="formField" appearance="outline">
+        <mat-label>Discount</mat-label>
+        <input matInput type="number" placeholder="0%" formControlName="discount" min="0">
+     </mat-form-field>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-container">
+      <mat-form-field class="formField" appearance="outline">
+        <mat-label>Categories</mat-label>
+        <mat-select formControlName="categories" multiple>
+          <mat-option *ngFor="let category of allCategories" [value]="category.id">{{category.description}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <br />
-        <button class="add-button" mat-raised-button (click)="addProduct()">Add</button>
-
-    </form>
+      <mat-form-field class="formField" appearance="outline">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let tag of tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeTag(tag)">
+            {{tag.description}}
+            <button matChipRemove *ngIf="removable">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="search tag..."
+            #tagInput
+            [formControl]="tagCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addTag($event)"
+            (keydown)="_filterTag(tagInput.value)"
+            (focus)="_filterTag(tagInput.value)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedTag($event)">
+          <mat-option *ngFor="let tag of filteredTags" [value]="tag">
+            {{tag.description}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-container">
+      <button class="browse-button" mat-raised-button (click)="browseImage()">Browse Image</button>
+    <span>{{ imageFileName }}</span>
+    </div>  
+      </form>
+      <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="image/*"/>
+  </div>
+  
+  <div class="footer">
+    <button class="add-button" mat-raised-button (click)="addProduct()">Add Product</button>
+  </div>
 </div>

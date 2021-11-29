@@ -8,7 +8,17 @@
         <span [ngClass]="{'crossed': price}">{{ product.price_per_unit }} LBP</span>
         <span *ngIf="price" class="discount">-{{ product.discount }}%</span>
       </mat-card-subtitle>
-      <app-star-rating [rating]="product.rating"></app-star-rating>
-      <button mat-raised-button (click)="updateClicked.emit(product)">Update</button>
+      <div style="display: grid;grid-template-columns: 92% 8%;">
+        <div>
+          <app-star-rating [rating]="product.rating"></app-star-rating>
+        </div>
+        <div>
+          <mat-icon aria-hidden="false" aria-label="icon" class="more-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button class="menu-button" mat-menu-item (click)="updateClicked.emit(product)">Update</button>
+            <button class="menu-button" mat-menu-item>Delete</button>
+          </mat-menu>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
