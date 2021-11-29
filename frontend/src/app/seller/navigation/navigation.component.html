@@ -1,12 +1,14 @@
 <div class="container">
   <div class="navbar">
-    <nav>
-    <ul>
-      <li><a routerLink="home" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="profile" routerLinkActive="active">Profile</a></li>
-      <li><a routerLink="sales" routerLinkActive="active">Sales</a></li>
-    </ul>
-  </nav>
+    <a (click)="switchRoute('home')" routerLink="home" routerLinkActive="active">
+      <div [@selectUnselect]="urlPath === 'home'? 'selected' : 'unselected'" class="nav-button"><span>Home</span></div>
+    </a>
+    <a (click)="switchRoute('profile')" routerLink="profile" routerLinkActive="active">
+      <div [@selectUnselect]="urlPath === 'profile'? 'selected' : 'unselected'" class="nav-button"><span>Profile</span></div>
+    </a>
+    <a (click)="switchRoute('sales')" routerLink="sales" routerLinkActive="active">
+      <div [@selectUnselect]="urlPath === 'sales'? 'selected' : 'unselected'" class="nav-button"><span>Sales</span></div>
+    </a>
 </div>
   <div class="content"><router-outlet></router-outlet></div>
 </div>

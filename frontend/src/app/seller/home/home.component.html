@@ -29,7 +29,7 @@
                 <mat-option *ngFor="let type of types" value="type.id">{{ type.title }}</mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="primary" class="add_product_button" (click)="toggleAddDrawer()">Add
+        <button mat-flat-button color="primary" class="add_product_button" (click)="toggleAddDrawer()">Add
             Product</button>
     </div>
     <div class="product-container">
@@ -41,26 +41,14 @@
 
 <div class="annihilator" *ngIf="add_drawer_open || update_drawer_open"></div>
 
-<div [@drawerOpenClose]="add_drawer_open? 'drawer-open' : 'drawer-closed'" class="add_product_drawer">
-    <div class="drawer_content">
-        <div class="drawer_header">
-            <mat-icon (click)="toggleAddDrawer()">close</mat-icon>
-            <span class="drawer-title">Add Product</span>
-        </div>
-        <div class="drawer_body">
-            <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="subcategories" (productAdded)="addProduct($event)"></app-add-product>
-        </div>
+<div [@drawerOpenClose]="add_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
+    <div class="drawer_body">
+        <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="subcategories" (productAdded)="addProduct($event)" (drawerClosed)="add_drawer_open=false"></app-add-product>
     </div>
 </div>
 
-<div [@drawerOpenClose]="update_drawer_open? 'drawer-open' : 'drawer-closed'" class="add_product_drawer">
-    <div class="drawer_content">
-        <div class="drawer_header">
-            <mat-icon (click)="closeUpdateDrawer()">close</mat-icon>
-            <span class="drawer-title">Update Product</span>
-        </div>
-        <div class="drawer_body">
-            <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="subcategories" [product]="productToUpdate!"></app-update-product>
-        </div>
+<div [@drawerOpenClose]="update_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
+    <div class="drawer_body">
+        <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="subcategories" [product]="productToUpdate!" (drawerClosed)="update_drawer_open=false"></app-update-product>
     </div>
 </div>

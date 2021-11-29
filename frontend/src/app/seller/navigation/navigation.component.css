@@ -6,10 +6,36 @@
 }
 
 .navbar {
-    box-shadow: 2px 0 5px rgba(44, 44, 44, 0.5);
-    background-color: rgb(124, 240, 255);
+    /* box-shadow: 2px 0 5px rgba(44, 44, 44, 0.5); */
+    background-color: #0074E1;
+}
+
+.navbar a {
+    text-decoration: none;
+    /* color: white; */
 }
 
 .content {
     overflow-y: scroll;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
