@@ -1,0 +1,51 @@
+
+    <div class="container">
+        <Label class="signup-title">Sign Up</Label>
+        <form [formGroup]="signupForm" class="formContainer">
+
+
+        <mat-form-field class="formField1" appearance="standard">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="name" required>
+        </mat-form-field>
+
+        <mat-form-field class="formField2" appearance="standard">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="name" required>
+        </mat-form-field>
+
+
+        <br />
+
+
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="phone" type="phone" required>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" type="email" ngModel [email]="true" required>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" formControlName="password" type="password" required>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+        </mat-form-field>
+        <br />
+
+
+        <input type="checkbox" ngModel="checked" name="active" required>
+        <label> I agree to the terms & conditions</label>
+        <br />
+        <button class="signup-button" ngModel="checked" mat-raised-button>Sign Up</button>
+
+        </form>
+    </div>
