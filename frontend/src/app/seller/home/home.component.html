@@ -34,7 +34,7 @@
     </div>
     <div class="product-container">
         <div *ngFor="let product of filteredProducts" class="product-card">
-            <product (updateClicked)="updateProduct($event)" [product]="product"></product>
+            <product (updateClicked)="updateProduct($event)" (deleteClicked)="deleteProduct($event)" [product]="product"></product>
         </div>
     </div>
 </div>

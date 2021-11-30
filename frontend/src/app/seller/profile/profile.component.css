@@ -1,0 +1,109 @@
+.container {
+    background-image: linear-gradient(40deg, #0074e186, #10e7dc56, #6cdaeea2, #1b9be585);
+    height: 100vh;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 63%;
+    padding: 5% 10% 5% 10%;
+}
+
+.sub-container {
+    display: grid;
+}
+
+.sub-container1 {
+    grid-template-rows: 50% 50%;
+}
+
+.sub-container2 {
+    grid-template-rows: 55% 45%;
+}
+
+.content-container {
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 2px rgba(197, 197, 197, 0.9);
+    padding: 35px 35px 30px 35px;
+}
+
+.sub-title {
+    font-size: 26px;
+    color: rgb(83, 83, 83);
+}
+
+.divider {
+    height: 2px;
+    background-color: rgb(151, 151, 151);
+    width: 100%;
+}
+
+.field-title {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+.information {
+    font-size: 18px;
+    padding: 1px 0 1px 0;
+    color: rgb(63, 63, 63);
+}
+
+.store_name {
+    padding: 7px 0 7px 0;
+}
+
+.icon {
+    color: rgb(61, 61, 61);
+    font-size: 18px;
+    padding-left: 7px;
+}
+
+.invisible-icon {
+    visibility: hidden;
+}
+
+.visible-icon {
+    visibility: visible;
+}
+
+input {
+    border: solid rgb(156, 156, 156) 2px;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-bottom: 2px;
+    width: 90%;
+    padding: 1%;
+}
+
+textarea {
+    width: 90%;
+    font-size: 18px;
+    border: solid rgb(156, 156, 156) 2px;
+    border-radius: 10px;
+    height: 120px;
+    resize: none;
+    padding: 1%;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #1B9CE5;
+    caret-color: #1B9CE5;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1B9CE5;
+    caret-color: #1B9CE5;
+}
+
+.save-button {
+    color: white;
+    background-color: #ffaa18;
+    font-size: 16px;
+}

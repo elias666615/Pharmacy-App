@@ -31,6 +31,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MultipurposePopupComponent } from './shared/multipurpose-popup/multipurpose-popup.component';
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AddProductComponent,
     UpdateProductComponent,
     SignupBuyerComponent,
+    MultipurposePopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatAutocompleteModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,4 +24,8 @@ export class ProductService {
   updateProduct(formData: FormData) {
     return this.http.put<Product>('http://127.0.0.1:8000/store/products/', formData);
   }
+
+  deleteProduct(id: number) {
+    return this.http.delete(`http://127.0.0.1:8000/store/products/?id=${id}`);
+  }
 }

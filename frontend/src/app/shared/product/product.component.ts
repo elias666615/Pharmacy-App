@@ -9,6 +9,7 @@ export class ProductComponent implements OnInit {
   @Input() product!: Product;
 
   @Output() updateClicked = new EventEmitter<Product>();
+  @Output() deleteClicked = new EventEmitter<Product>();
 
   baseUrl: string = 'http://127.0.0.1:8000';
   price!: number;

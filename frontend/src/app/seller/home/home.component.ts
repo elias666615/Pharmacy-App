@@ -5,6 +5,9 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { LookupsService } from 'src/app/shared/services/lookups.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { MultipurposePopupComponent } from 'src/app/shared/multipurpose-popup/multipurpose-popup.component';
+import { P } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-home',
@@ -42,7 +45,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private lookupsService: LookupsService,
-    private _snackBar: MatSnackBar,) { }
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.fetchProducts(2);
@@ -92,5 +96,20 @@ export class HomeComponent implements OnInit {
   productUpdated(product: Product) {
     this.update_drawer_open = false;
     this.fetchProducts(2);
+  }
+
+  deleteProduct(product: Product) {
+    const dialofRef = this.dialog.open(MultipurposePopupComponent, {
+      width: '600px',
+      data: {name: product.name, action:'delete_p'}
+    });
+
+    dialofRef.afterClosed().subscribe(result => {
+      if(result === true) {
+        this.productService.deleteProduct(product.id).subscribe(() => {
+          this.fetchProducts(2);
+        });
+      }
+    });
   }
 }

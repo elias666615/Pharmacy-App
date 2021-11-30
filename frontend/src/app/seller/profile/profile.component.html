@@ -1,1 +1,96 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="content">
+    <div class="sub-container sub-container1">
+      <div class="content-container">
+        <h1 class="sub-title">Account information</h1>
+        <div class="divider"></div>
+        <div class="inner-content">
+          <p class="field-title">Email</p>
+          <p class="information">{{ email }}</p>
+          <p class="field-title">Password</p>
+          <p class="information">
+            {{ password
+            }}<mat-icon 
+            [ngClass]="{'icon': true, 'invisible-icon': editing != '' && editing != 'password', 'visible-icon': editing === ''}" 
+            (click)="editField('password')"
+              >edit</mat-icon
+            >
+          </p>
+          <p class="field-title">File1</p>
+          <p class="information">
+            filemedreadfdsaf.pdf<mat-icon
+            [ngClass]="{'icon': true, 'invisible-icon': editing != '' && editing != 'certificate', 'visible-icon': editing === ''}" 
+              (click)="editField('certificate')"
+              >edit</mat-icon
+            >
+          </p>
+        </div>
+      </div>
+      <div class="content-container">
+        <h1 class="sub-title">Statistics</h1>
+        <div class="divider"></div>
+        <div class="inner-content">
+          <p class="field-title">Store rating</p>
+          <app-star-rating [rating]="rating"></app-star-rating>
+          <p class="field-title">Items sold</p>
+          <p class="information">{{ itemsSold }} items</p>
+          <p class="field-title">Total revenue</p>
+          <p class="information">{{ totalRevenue }} LBP</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub-container sub-container2">
+      <div class="content-container">
+        <button mat-flat-button class="save-button" style="float: right;" [disabled]="saveStoreInfoDisabled">save changes</button>
+        <h1 class="sub-title">Store information</h1>
+        <div class="divider"></div>
+        <div class="inner-content">
+          <p class="field-title">Name</p>
+          <input
+            #storeName
+            *ngIf="editing === 'store_name'"
+            matInput
+            [formControl]="storeNameCtrl"
+          /><mat-icon
+            *ngIf="editing === 'store_name'"
+            class="icon"
+            (click)="stopEditing('store_name')"
+            >check</mat-icon
+          >
+          <p *ngIf="editing != 'store_name'" class="information store_name">
+            {{ store_name
+            }}<mat-icon 
+                [ngClass]="{'icon': true, 'invisible-icon': editing != '' && editing != 'store_name', 'visible-icon': editing === ''}" 
+                (click)="editField('store_name')"
+              >edit</mat-icon
+            >
+          </p>
+          <p class="field-title">Location</p>
+          <textarea
+            #storeLocation
+            *ngIf="editing === 'store_location'"
+            [formControl]="storeLocationCtrl"
+          ></textarea
+          ><mat-icon
+            *ngIf="editing === 'store_location'"
+            class="icon"
+            (click)="stopEditing('store_location')"
+            >check</mat-icon
+          >
+          <p *ngIf="editing != 'store_location'" class="information">
+            {{ store_location
+            }}<mat-icon 
+                [ngClass]="{'icon': true, 'invisible-icon': editing != '' && editing != 'store_location', 'visible-icon': editing === ''}" 
+                (click)="editField('store_location')"
+              >edit</mat-icon
+            >
+          </p>
+        </div>
+      </div>
+      <div class="content-container">
+        <h1 class="sub-title">Banking information</h1>
+        <div class="divider"></div>
+      </div>
+    </div>
+  </div>
+</div>

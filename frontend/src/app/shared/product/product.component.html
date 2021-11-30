@@ -16,7 +16,7 @@
           <mat-icon aria-hidden="false" aria-label="icon" class="more-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
           <mat-menu #menu="matMenu">
             <button class="menu-button" mat-menu-item (click)="updateClicked.emit(product)">Update</button>
-            <button class="menu-button" mat-menu-item>Delete</button>
+            <button class="menu-button" mat-menu-item (click)="deleteClicked.emit(product)">Delete</button>
           </mat-menu>
         </div>
       </div>

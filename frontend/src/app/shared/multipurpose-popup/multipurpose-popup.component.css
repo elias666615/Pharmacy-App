@@ -1,0 +1,30 @@
+.content {
+    padding: 20px 40px 20px 40px;
+}
+
+.title {
+    font-size: 45px;
+    text-align: center;
+    padding: 10px;
+}
+
+.message {
+    font-size: 30px;
+    line-height: 150%;
+}
+
+button {
+    font-size: 25px;
+    padding: 10px 15px 10px 15px;
+    float: right;
+}
+
+.cancel_btn {
+    margin-right: 10px;
+    background-color: #ffaa18;
+}
+
+.delete_btn {
+    margin-right: 10px;
+    background-color: rgb(255, 50, 50);
+}
