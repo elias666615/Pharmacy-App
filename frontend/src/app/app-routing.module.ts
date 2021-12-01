@@ -10,14 +10,16 @@ import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'SignupBuyer', component: SignupBuyerComponent},
-  { path: 'seller', component: NavigationComponent, 
+  { path: 'signup', component: SignupBuyerComponent },
+  {
+    path: 'seller', component: NavigationComponent,
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'sales', component: SalesComponent },
-    ]},
-  { path: '**', component: PageNotFoundComponent}
+    ]
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
