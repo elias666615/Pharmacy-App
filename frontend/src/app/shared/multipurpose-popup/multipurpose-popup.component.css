@@ -3,28 +3,31 @@
 }
 
 .title {
-    font-size: 45px;
+    font-size: 40px;
     text-align: center;
-    padding: 10px;
+    padding: 7px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .message {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 150%;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 button {
-    font-size: 25px;
-    padding: 10px 15px 10px 15px;
+    font-size: 23px;
+    padding: 6px 15px 6px 15px;
     float: right;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .cancel_btn {
     margin-right: 10px;
-    background-color: #ffaa18;
+    background-color: #37d3cb;
 }
 
 .delete_btn {
     margin-right: 10px;
-    background-color: rgb(255, 50, 50);
+    background-color: #fd2f2f;
 }

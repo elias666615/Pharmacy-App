@@ -3,10 +3,15 @@
 }
 
 .header {
-    height: 4vh;
+    /* height: 4vh; */
     padding: 20px;
     box-shadow: 0 2px 2px rgba(197, 197, 197, 0.6);
 }
+
+.drawer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+} 
 
 .header mat-icon {
     font-size: 40px;
@@ -31,11 +36,20 @@
 .formField{
     width:100%;
     margin-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
     /* margin-top: 12px; */
 }
 
+mat-select {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+mat-option {
+    font-family: 'Ubuntu', sans-serif;
+}
+
 .add-button{
-    background-color: #ffaa18;
+    background-color: #fd2f2f;
     font-size: 25px;
     color: white;
     width: 100%;
@@ -44,7 +58,7 @@
 
 /* mat-icon-stepper selected color change  */
 ::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    background-color: red!important;
+    background-color: #ee2222!important;
 }
 
 /* input outline color */
@@ -55,23 +69,23 @@
 
 /* mat-input focused color */
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #1B9CE5!important;
+    color: #37d3cb!important;
 }
 
 /* mat-input error outline color */
 ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
-    color: rgb(255, 50, 50)!important;
+    color: #ee2222!important;
     opacity: 0.8!important;
 }
 
 /* mat-input caret color */
 ::ng-deep .mat-input-element {
-    caret-color: #1B9CE5!important;
+    caret-color: #37d3cb!important;
 }
 
 /* mat-input error caret color */
 ::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
-    caret-color: rgb(255, 50, 50)!important;
+    caret-color: #ee2222!important;
 }
 
 /* mat-label normal state style */
@@ -82,12 +96,12 @@
 
 /* mat-label focused style */
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-    color: #1B9CE5!important;
+    color: #37d3cb!important;
 }
 
 /* mat-label error style */
 ::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-    color: rgb(255, 50, 50)!important;
+    color: #ee2222!important;
 }
 
 .file_input {
@@ -99,7 +113,7 @@
 
 .browse-button {
     font-size: 18px;
-    background-color: #ffaa18;
+    background-color: #fd2f2f;
     color: white;
     margin-right: 10px;
 }

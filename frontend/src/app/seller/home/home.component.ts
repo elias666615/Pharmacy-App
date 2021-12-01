@@ -100,7 +100,8 @@ export class HomeComponent implements OnInit {
 
   deleteProduct(product: Product) {
     const dialofRef = this.dialog.open(MultipurposePopupComponent, {
-      width: '600px',
+      width: '500px',
+      height: '280px',
       data: {name: product.name, action:'delete_p'}
     });
 

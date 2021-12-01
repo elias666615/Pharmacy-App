@@ -1,11 +1,13 @@
 .container {
-    background-image: linear-gradient(40deg, #0074e186, #10e7dc56, #6cdaeea2, #1b9be585);
+    background: #C1C8E4;
+    background-image: linear-gradient(20deg ,#3feee586, #55bbc969, #b8f9ffa6, #3feee598);
     height: 100vh;
+    overflow: hidden;
 }
 
 .content {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
     height: 63%;
     padding: 5% 10% 5% 10%;
 }
@@ -19,13 +21,13 @@
 }
 
 .sub-container2 {
-    grid-template-rows: 55% 45%;
+    grid-template-rows: 60% 40%;
 }
 
 .content-container {
     background-color: white;
     border-radius: 20px;
-    margin: 20px;
+    margin: 14px;
     box-shadow: 0 4px 2px rgba(197, 197, 197, 0.9);
     padding: 35px 35px 30px 35px;
 }
@@ -33,6 +35,9 @@
 .sub-title {
     font-size: 26px;
     color: rgb(83, 83, 83);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    /* letter-spacing: 0.5px; */
 }
 
 .divider {
@@ -42,15 +47,20 @@
 }
 
 .field-title {
-    font-size: 20px;
+    font-size: 21px;
     margin-top: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fd2f2f;
 }
 
 
 .information {
-    font-size: 18px;
+    font-size: 20px;
     padding: 1px 0 1px 0;
     color: rgb(63, 63, 63);
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .store_name {
@@ -104,6 +114,6 @@ input:focus {
 
 .save-button {
     color: white;
-    background-color: #ffaa18;
+    background-color: #fd2f2f;
     font-size: 16px;
 }

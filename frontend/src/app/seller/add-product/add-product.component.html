@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="header">
     <mat-icon (click)="drawerClosed.emit(false)">close</mat-icon>
-    <span class="drawer-title">Add Product</span>
+    <span style="margin-bottom: 40px;" class="drawer-title">Add Product</span>
   </div>
   <div class="container">
     <form [formGroup]="productForm">
@@ -96,7 +96,7 @@
     </div>
     <div class="divider"></div>
     <div class="sub-container">
-      <button class="browse-button" mat-raised-button (click)="browseImage()">Browse Image</button>
+      <button class="browse-button" mat-flat-button (click)="browseImage()">Browse Image</button>
     <span>{{ imageFileName }}</span>
     </div>  
       </form>
