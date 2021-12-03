@@ -1,0 +1,26 @@
+.container {
+    padding: 5% 10% 0 10%;
+    height: 90%;
+}
+
+.formField {
+    width: 100%;
+    font-size: 17px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.signup-button {
+    width: 100%;
+    font-size: 30px;
+    padding: 2% 0 2% 0;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    margin-top: 7%;
+    background-color: rgb(255, 37, 37);
+    color: white;
+}
+
+.terms-conditions {
+    font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 4% 0 4% 0;
+}

@@ -1,0 +1,61 @@
+<div class="container">
+  <form [formGroup]="signupForm">
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>First Name</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="firstname"
+      />
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Last Name</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="lastname"
+      />
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Phone Number</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="phone"
+      />
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Email</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        placeholder="email@example.com"
+        formControlName="email"
+      />
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Password</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="password"
+        type="password"
+      />
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Confirm Password</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="confirmpassword"
+        type="password"
+      />
+    </mat-form-field>
+  </form>
+  <div>
+    <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>
+  </div>
+  <button class="signup-button" mat-flat-button [disabled]="signupDisabled">
+    Sign Up
+  </button>
+</div>

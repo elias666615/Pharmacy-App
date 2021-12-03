@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 
@@ -33,6 +34,11 @@ import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MultipurposePopupComponent } from './shared/multipurpose-popup/multipurpose-popup.component';
+import { MatRippleModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SignupComponent } from './authentication/signup/signup.component';
+import { SignupUserComponent } from './authentication/signup-user/signup-user.component';
+import { SignupSellerComponent } from './authentication/signup-seller/signup-seller.component';
 
 
 @NgModule({
@@ -50,12 +56,17 @@ import { MultipurposePopupComponent } from './shared/multipurpose-popup/multipur
     UpdateProductComponent,
     SignupBuyerComponent,
     MultipurposePopupComponent,
+    SignupComponent,
+    SignupUserComponent,
+    SignupSellerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBEuiq9gVfTLFsrrSAr6TcqB1FNzTHjDpE'}),
+    // AgmCoreModule.forRoot({apiKey: ''}),
 
     MatCardModule,
     MatFormFieldModule,
@@ -72,6 +83,8 @@ import { MultipurposePopupComponent } from './shared/multipurpose-popup/multipur
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatRippleModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

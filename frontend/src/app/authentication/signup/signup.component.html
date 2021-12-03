@@ -1,0 +1,81 @@
+<div class="main-container">
+    <div class="sub-container">
+      <div class="pick-container">
+        <h1 class="signup-title">Sign Up as a...</h1>
+        <div
+          matRipple
+          [ngClass]="{
+            'button-container': true,
+            'button-border': role === 'user'
+          }"
+          (click)="pickSignUpRole('user')"
+        >
+          <div>
+            <h1 class="role-title">User</h1>
+            <img
+              src="../../../assets/images/pharmacyCustomer.jpg"
+              alt="customer"
+              style="width: 150px; border-radius: 50%; text-align: center"
+            />
+          </div>
+          <div
+            style="
+              display: flex;
+              align-content: center;
+              justify-content: center;
+              flex-direction: column;
+              padding-left: 10%;
+            "
+          >
+            <h1 class="role-description">
+              Browse pharmaceutical products, and easily find the medecine for
+              you. Add products to your cart, and checkout for the product to be
+              delivered staight to your home free shipping. Profit from special
+              discounts and the widest selection of medecine ever.
+            </h1>
+          </div>
+        </div>
+        <div
+          matRipple
+          [ngClass]="{
+            'button-container': true,
+            'button-border': role === 'seller'
+          }"
+          (click)="pickSignUpRole('seller')"
+        >
+          <div>
+            <h1 class="role-title">Pharmacy</h1>
+            <img
+              src="../../../assets/images/pharmacist.jfif"
+              style="width: 150px; border-radius: 50%; text-align: center"
+              alt=""
+            />
+          </div>
+          <div
+            style="
+              display: flex;
+              align-content: center;
+              justify-content: center;
+              flex-direction: column;
+              padding-left: 10%;
+            "
+          >
+            <h1 class="role-description">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit
+              repellat odio possimus, voluptates iste excepturi fugit
+              reprehenderit molestias doloremque atque eligendi quam blanditiis
+              asperiores, cupiditate illo fugiat provident fuga necessitatibus
+            </h1>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-container">
+        <!-- SIGN UP USER -->
+        <app-signup-user *ngIf="role === 'user'"></app-signup-user>
+        <!-- SIGN UP SELLER -->
+        <app-signup-seller *ngIf="role === 'seller'"></app-signup-seller>
+      </div>
+    </div>
+  </div>
+  

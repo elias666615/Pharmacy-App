@@ -1,0 +1,78 @@
+<div class="container">
+    <form [formGroup]="signupForm">
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Pharmacy Name</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="pharmacyname"
+        />
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Phone</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="phone"
+          type="phone"
+        />
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Email</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          placeholder="email@example.com"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Password</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="password"
+          type="password"
+        />
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="confirmpassword"
+          type="password"
+        />
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Location</mat-label>
+        <textarea
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="location"
+        ></textarea>
+      </mat-form-field>
+      <!-- <div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+      </div> -->
+      <div class="sub-container">
+        <button
+          class="browse-button"
+          mat-raised-button
+          (click)="browseImage()"
+        >
+          Browse Image
+        </button>
+        <span>{{ imageFileName }}</span>
+      </div>
+    </form>
+    <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="image/*" />
+    <div>
+        <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>
+      </div>
+      <button class="signup-button" mat-flat-button [disabled]="signupDisabled" (click)="signUp()">
+        Sign Up
+      </button>
+  </div>

@@ -7,10 +7,11 @@ import { ProfileComponent } from './seller/profile/profile.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { HomeComponent } from './seller/home/home.component';
 import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer.component';
+import { SignupComponent } from './authentication/signup/signup.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupBuyerComponent },
+  { path: 'signup', component: SignupComponent },
   {
     path: 'seller', component: NavigationComponent,
     children: [

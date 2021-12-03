@@ -1,93 +1,256 @@
-<div class="container">
-    <Label class="signup-title">Sign Up</Label>
-    <form [formGroup]="signupForm" class="formContainer">
-        <mat-form-field class="formField1" appearance="standard">
-            <mat-label>First Name</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="First Name" formControlName="firstname">
+<div class="main-container">
+  <div class="sub-container">
+    <div class="pick-container">
+      <h1 class="signup-title">Sign Up as a...</h1>
+      <div
+        matRipple
+        [ngClass]="{
+          'button-container': true,
+          'button-border': role === 'user'
+        }"
+        (click)="pickSignUpRole('user')"
+      >
+        <div>
+          <h1 class="role-title">User</h1>
+          <img
+            src="../../../assets/images/pharmacyCustomer.jpg"
+            alt="customer"
+            style="width: 150px; border-radius: 50%; text-align: center"
+          />
+        </div>
+        <div
+          style="
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-left: 10%;
+          "
+        >
+          <h1 class="role-description">
+            Browse pharmaceutical products, and easily find the medecine for
+            you. Add products to your cart, and checkout for the product to be
+            delivered staight to your home free shipping. Profit from special
+            discounts and the widest selection of medecine ever.
+          </h1>
+        </div>
+      </div>
+      <div
+        matRipple
+        [ngClass]="{
+          'button-container': true,
+          'button-border': role === 'seller'
+        }"
+        (click)="pickSignUpRole('seller')"
+      >
+        <div>
+          <h1 class="role-title">Pharmacy</h1>
+          <img
+            src="../../../assets/images/pharmacist.jfif"
+            style="width: 150px; border-radius: 50%; text-align: center"
+            alt=""
+          />
+        </div>
+        <div
+          style="
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-left: 10%;
+          "
+        >
+          <h1 class="role-description">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit
+            repellat odio possimus, voluptates iste excepturi fugit
+            reprehenderit molestias doloremque atque eligendi quam blanditiis
+            asperiores, cupiditate illo fugiat provident fuga necessitatibus
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div>
+       <!-- SIGN UP USER -->
+    <div class="signup-user formContainer" [@selectUnselect]="selectedRole === 'user'? 'selected' : 'unselected'" *ngIf="role === 'user'">
+      <form [formGroup]="userSignupForm">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>First Name</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="First Name"
+            formControlName="firstname"
+          />
         </mat-form-field>
-        <mat-form-field class="formField2" appearance="standard">
-            <mat-label>Last Name</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Last Name" formControlName="lastname">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Last Name</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Last Name"
+            formControlName="lastname"
+          />
         </mat-form-field>
         <br />
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Phone</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Phone" formControlName="phone"
-                type="phone">
+          <mat-label>Phone</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Phone"
+            formControlName="phone"
+            type="phone"
+          />
         </mat-form-field>
         <br />
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Email</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Email" formControlName="email" type="email"
-                [email]="true">
+          <mat-label>Email</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            type="email"
+            [email]="true"
+          />
         </mat-form-field>
         <br />
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Password</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Password" formControlName="password"
-                type="password">
+          <mat-label>Password</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            type="password"
+          />
         </mat-form-field>
         <br />
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Confirm Password</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Confirm Password"
-                formControlName="confirmPassword" type="password">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+            type="password"
+          />
         </mat-form-field>
+        <div style="padding: 3% 0 2% 0;">
+          <input id="_term-condition" #termCheck type="checkbox" (change)="checkIfDisabled()" />
+          <label for="_term-condition" style="font-size: 'Ubuntu', sans-serif;font-size: 17px;"> I agree to the terms & conditions</label>
+        </div>
+        
         <br />
-        <input #termCheck type="checkbox" (change)="checkIfDisabled()">
-        <label> I agree to the terms & conditions</label>
-        <br />
-        <button class="signup-button" mat-raised-button [disabled]="signupDisabled">Sign Up</button>
-    </form>
-</div>
-<br />
-<div class="container">
-    <form [formGroup]="signupForm" class="formContainer">
+        <button
+          style="margin-top: 8%;"
+          class="signup-button"
+          mat-raised-button
+          [disabled]="signupDisabled"
+        >
+          Sign Up
+        </button>
+      </form>
+    </div>
+    <!-- SIGN UP SELLER -->
+    <div class="signup-seller formContainer" *ngIf="role === 'seller'" [@selectUnselect]="selectedRole === 'seller'? 'selected' : 'unselected'">
+      <form [formGroup]="pharmacySignupForm">
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Pharmacy Name</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Pharmacy Name"
-                formControlName="pharmacyname">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Phone</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Phone" formControlName="phone"
-                type="phone">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Email</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Email" formControlName="email" type="email"
-                [email]="true">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Password</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Password" formControlName="password"
-                type="password">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Confirm Password</mat-label>
-            <input (ngModelChange)="checkIfDisabled()" matInput placeholder="Confirm Password"
-                formControlName="confirmPassword" type="password">
+          <mat-label>Pharmacy Name</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Pharmacy Name"
+            formControlName="pharmacyname"
+          />
         </mat-form-field>
         <br />
         <mat-form-field class="formField" appearance="standard">
-            <mat-label>Location</mat-label>
-            <textarea (ngModelChange)="checkIfDisabled()" matInput placeholder="Location"
-                formControlName="location"></textarea>
+          <mat-label>Phone</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Phone"
+            formControlName="phone"
+            type="phone"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Email</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            type="email"
+            [email]="true"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Password</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            type="password"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+            type="password"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Location</mat-label>
+          <textarea
+            (ngModelChange)="checkIfDisabled()"
+            matInput
+            placeholder="Location"
+            formControlName="location"
+          ></textarea>
         </mat-form-field>
         <div class="sub-container">
-            <button class="browse-button" mat-raised-button (click)="browseImage()">Browse Image</button>
-            <span>{{ imageFileName }}</span>
+          <button
+            class="browse-button"
+            mat-raised-button
+            (click)="browseImage()"
+          >
+            Browse Image
+          </button>
+          <span>{{ imageFileName }}</span>
         </div>
-        <br />
-
-        <input #termCheck class="checkbox" type="checkbox" (change)="checkIfDisabled()">
-        <label> I agree to the terms & conditions</label>
-        <br />
-        <button class="signup-button" mat-raised-button [disabled]="signupDisabled">Sign Up</button>
-    </form>
-    <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="image/*" />
+        <div style="padding: 3% 0 2% 0;">
+          <input
+          #termCheck
+          class="checkbox"
+          type="checkbox"
+          (change)="checkIfDisabled()"
+          id="term-conditions"
+        />
+        <label for="term-conditions" style="font-size: 'Ubuntu', sans-serif;font-size: 17px;"> I agree to the terms & conditions</label>
+        </div>
+        <button
+          style="margin-top: 2%;"
+          class="signup-button"
+          mat-raised-button
+          [disabled]="signupDisabled"
+        >
+          Sign Up
+        </button>
+      </form>
+      <!-- <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="image/*" /> -->
+    </div>
+    </div>
+  </div>
 </div>
