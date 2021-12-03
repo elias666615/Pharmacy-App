@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +7,11 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  StayLoggedIn: boolean = false;
   loginForm = this.fb.group({
-    email: [''],
-    password: [''],
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]],
 
   });
   constructor(private fb: FormBuilder) { }

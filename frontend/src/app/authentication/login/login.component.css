@@ -2,19 +2,19 @@
     align-items: center;
     justify-content: center;
     text-align:center;
-    padding-top:5%;
-
+    background-image: url("https://c1.wallpaperflare.com/preview/839/207/808/pill-tablet-pharmacy-medicine.jpg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
 
 .formContainer{
     padding :5%;
     font-size:18px;
-    align-items: center;
-    justify-content: center;
-    width:30%;
+    width:50%;
     height:35%;
-    text-align:left;
-    margin: 5% auto ;
     border-radius: 15px;
     box-shadow: 0 3px 5px rgba(95, 95, 95, 0.5);
     background-color:rgb(245, 240, 240);
@@ -22,32 +22,44 @@
 
 .formField{
     width:100%;
-    
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .login-button{
     background-color: red;
     font-size: 18px;
     color: white;
-    margin-top: 5%;
+    margin-top: 3%;
     width: 100%;
-
 }
 
 .login-title{
     font-weight: bold;
-    font-size: 50px;
-    align-items: center;
-    justify-content: center;    
-    text-align:center;
-    margin: 8% auto ;
+    font-size: 120px;
+    margin-bottom: 30%;
+    font-family: 'Montserrat', sans-serif;
     color:rgb(51, 48, 48);
 }
+
 .signup-button{
     background-color: red;
     font-size: 18px;
     color: white;
     margin-top: 5%;
     width: 20%;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+
+}
+
+.Checkbox{
+    text-align: left;
+    margin-top: 2%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.Signup-label{
+    margin-top: 5%;
+    font-family: 'Montserrat', sans-serif;
 
 }

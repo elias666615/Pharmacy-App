@@ -1,26 +1,34 @@
 <div class="container">
-    <Label class="login-title">Login</Label>
-    <form [formGroup]="loginForm" class="formContainer">
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="email" type="email" ngModel [email]="true">
-        </mat-form-field>
-        <br />
-        <mat-form-field class="formField" appearance="standard">
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" formControlName="password" type="password">
-        </mat-form-field>
-        <br />
-        <input type="checkbox">
-        <label>Remember me</label>
-        <br />
+
+
+    <div class="tilte-container">
+        <h1 class="login-title">Login</h1>
+    </div>
+
+
+    <div class="formContainer">
+        <form [formGroup]="loginForm" >
+            <mat-form-field class="formField" appearance="standard">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="email@example.com" formControlName="email" >
+            </mat-form-field>
+            <br />
+            <mat-form-field class="formField" appearance="standard">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password">
+            </mat-form-field>
+        </form>
+
+        <div class="Checkbox">
+            <mat-checkbox  [(ngModel)]="StayLoggedIn">Stay logged in</mat-checkbox>
+        </div>
+
         <button class="login-button" mat-raised-button>Login</button>
-        <br />
+
+        <div class="Signup-label">
+             <p>New to Pharmacia? <a routerLink="/signup">Signup</a> </p>
+        </div>
+    </div>
 
 
-        <Label>New to Pharmacia? </Label>
-
-        <button class="signup-button" mat-raised-button>SignUp</button>
-
-    </form>
 </div>
