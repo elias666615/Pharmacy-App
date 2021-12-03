@@ -94,7 +94,7 @@ export class SignupSellerComponent implements OnInit {
       data.append('role', 'SLR');
       console.log(data);
 
-      this.authService.signupSeller(data).subscribe(data => console.log(data));
+      this.authService.signup(data).subscribe(data => console.log(data));
     }
   }
 }
