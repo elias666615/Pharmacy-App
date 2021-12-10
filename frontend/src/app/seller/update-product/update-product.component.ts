@@ -154,7 +154,7 @@ export class UpdateProductComponent implements OnInit {
       creationForm.append('price_per_unit', this.productForm.controls['price'].value);
       creationForm.append('discount', this.productForm.controls['discount'].value);
       creationForm.append('initial_quantity', this.productForm.controls['quantity'].value);
-      creationForm.append('image', this.imageUrl);
+      // creationForm.append('image', this.imageUrl);
       creationForm.append('categories', this.productForm.controls['categories'].value);
       creationForm.append('tags', _tags.join(','));
       creationForm.append('type', this.productForm.controls['type'].value);

@@ -39,6 +39,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { SignupUserComponent } from './authentication/signup-user/signup-user.component';
 import { SignupSellerComponent } from './authentication/signup-seller/signup-seller.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BuyerNavigationComponent } from './buyer/buyer-navigation/buyer-navigation.component';
+import { BuyerHomeComponent } from './buyer/buyer-home/buyer-home.component';
+import { BuyerOrdersComponent } from './buyer/buyer-orders/buyer-orders.component';
+import { OrderItemComponent } from './shared/order-item/order-item.component';
+import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 
 
 @NgModule({
@@ -59,6 +65,11 @@ import { SignupSellerComponent } from './authentication/signup-seller/signup-sel
     SignupComponent,
     SignupUserComponent,
     SignupSellerComponent,
+    BuyerNavigationComponent,
+    BuyerHomeComponent,
+    BuyerOrdersComponent,
+    OrderItemComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +96,7 @@ import { SignupSellerComponent } from './authentication/signup-seller/signup-sel
     MatDialogModule,
     MatRippleModule,
     MatCheckboxModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

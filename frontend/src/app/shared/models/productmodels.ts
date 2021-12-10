@@ -47,3 +47,19 @@ export interface Type {
     title: string;
     description: string;
 }
+
+export interface Order {
+    id: number;
+    state: string;
+    user: number;
+    product: Product;
+    price_per_unit: number;
+    quantity: number;
+    order_date: string;
+}
+
+export interface CreateOrder {
+    user: string;
+    product: number;
+    quantity: number;
+}

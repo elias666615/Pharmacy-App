@@ -1,17 +1,16 @@
-class UserDataManager {
+import { Role, Store, UserInfo } from "../models/userModels";
+
+export class UserDataManager {
     private static instance: UserDataManager;
 
     private static email: string;
-    private static firstname: string;
-    private static lastname: string;
-    private static phonenumber: string;
-    private static role: string;
-    private static pharmacyname: string;
-    private static pharmacylocation: string;
-    private static store_id: string;
-
     private static accessToken: string;
     private static refreshToken: string;
+
+    private static userinfo: UserInfo;
+    private static store: Store;
+
+    
 
     private constructor() {}
 
@@ -27,11 +26,11 @@ class UserDataManager {
         return this.email;
     }
 
-    public static getRole(): string {
-        return this.role;
+    public static getRole(): Role {
+        return this.userinfo.role;
     }
 
-    public static getAcessToken(): string {
+    public static getAccessToken(): string {
         return this.accessToken;
     }
 
@@ -39,7 +38,28 @@ class UserDataManager {
         return this.refreshToken;
     }
 
-    public static getStoreId() {
-        return this.store_id;
+    public static getStore() {
+        return this.store;
     }
+
+    public static setEmail(email: string) {
+        this.email = email;
+    }
+
+    public static setAccess(access: string) {
+        this.accessToken = access;
+    }
+
+    public static setRefresh(refresh: string) {
+        this.refreshToken = refresh;
+    }
+
+    public static setUserInfo(userInfo: UserInfo) {
+        this.userinfo = userInfo;
+    }
+
+    public static setStore(store: Store) {
+        this.store = store;
+    }
+
 }

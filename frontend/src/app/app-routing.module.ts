@@ -6,12 +6,21 @@ import { NavigationComponent } from './seller/navigation/navigation.component';
 import { ProfileComponent } from './seller/profile/profile.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { HomeComponent } from './seller/home/home.component';
-import { SignupBuyerComponent } from './authentication/signup-buyer/signup-buyer.component';
 import { SignupComponent } from './authentication/signup/signup.component';
+import { BuyerNavigationComponent } from './buyer/buyer-navigation/buyer-navigation.component';
+import { BuyerHomeComponent } from './buyer/buyer-home/buyer-home.component';
+import { BuyerOrdersComponent } from './buyer/buyer-orders/buyer-orders.component';
+import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'buyer', component: BuyerNavigationComponent,
+    children: [
+      { path: 'home', component: BuyerHomeComponent },
+      { path: 'orders', component: BuyerOrdersComponent },
+    ] 
+  },
   {
     path: 'seller', component: NavigationComponent,
     children: [
@@ -20,6 +29,7 @@ const routes: Routes = [
       { path: 'sales', component: SalesComponent },
     ]
   },
+  { path: 'product/:id', component: ProductDetailsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

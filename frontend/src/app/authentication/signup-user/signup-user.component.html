@@ -55,7 +55,7 @@
   <div>
     <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>
   </div>
-  <button class="signup-button" mat-flat-button [disabled]="signupDisabled">
+  <button class="signup-button" mat-flat-button [disabled]="signupDisabled" (click)="signUp()">
     Sign Up
   </button>
 </div>

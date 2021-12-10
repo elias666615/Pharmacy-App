@@ -23,7 +23,7 @@
             <mat-checkbox  [(ngModel)]="StayLoggedIn">Stay logged in</mat-checkbox>
         </div>
 
-        <button class="login-button" mat-raised-button>Login</button>
+        <button (click)="login()" class="login-button" mat-raised-button>Login</button>
 
         <div class="Signup-label">
              <p>New to Pharmacia? <a routerLink="/signup">Signup</a> </p>

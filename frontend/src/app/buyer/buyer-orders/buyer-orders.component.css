@@ -1,0 +1,76 @@
+::ng-deep .mat-tab-label {
+    font-weight: 500; 
+    font-family: 'Montserrat', sans-serif;
+    color:black !important;
+    font-size: 25px;
+    padding: 0 10% 0 10% !important;
+    opacity: 1 !important;
+}
+
+:ng-deep .mat-tab-link {
+    color:rgb(255, 0, 0) !important;
+}
+
+::ng-deep .mat-ink-bar {
+   background-color: white !important;
+}
+
+::ng-deep .mat-tab-label-active {
+    font-weight: 500; 
+    font-family: 'Montserrat', sans-serif;
+   color: rgb(0, 120, 218) !important;
+   font-size: 25px;
+   opacity: 1 !important;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    height: 90vh;
+    background: #C1C8E4;
+    background-image: linear-gradient(20deg ,#3feee586, #55bbc969, #b8f9ffa6, #3feee598);
+    overflow-y: hidden !important;
+}
+
+
+.new-container {
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+
+.orders-new-container {
+    padding: 5% 10% 5% 10%;
+}
+
+.checkout-container {
+    background-color: white;
+    margin: 12% 15% 5% 0;
+    border-radius: 15px;
+    padding: 6%;
+}
+
+
+mat-select {
+    font-size: 25px;
+    border-bottom: solid black 1px;
+    padding-bottom: 1%;
+}
+
+.checkout-info {
+    font-size: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 600;
+}
+
+mat-form-field {
+    font-size: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 600;
+    width: 100%;
+}
+
+button {
+    font-size: 25px;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    font-weight: 500;
+    padding: 0.3% 1% 0.3% 1%;
+}
+

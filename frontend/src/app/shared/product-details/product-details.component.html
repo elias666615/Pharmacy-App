@@ -1,0 +1,10 @@
+<div *ngIf="!loading" class="container">
+    <img class="product-image" src="{{ baseURL + product.image }}" alt="product image">
+    <p>{{ product.description }}</p>
+    <p>{{ product.price_per_unit }} LBP</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" [(ngModel)]="orderQuantity">
+      </mat-form-field>
+      <button mat-flat-button (click)="addToOrders()">Add to Orders</button>
+</div>
