@@ -32,7 +32,7 @@ export class BuyerOrdersComponent implements OnInit {
   }
 
   fetchOrders() {
-    this.productService.fetchOrdersByUser(UserDataManager.getEmail()).subscribe((data: Order[]) => { 
+    this.productService.fetchOrdersByUser(localStorage.getItem('email')!).subscribe((data: Order[]) => { 
       this.Allorders = data;
       this.categorizeOrders();
       this.calculateTotal();

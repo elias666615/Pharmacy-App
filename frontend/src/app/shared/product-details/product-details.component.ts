@@ -33,8 +33,8 @@ export class ProductDetailsComponent implements OnInit {
 
   addToOrders() {
     if(this.orderQuantity > 0) {
-      console.log(UserDataManager.getEmail());
-      let order: CreateOrder = {product: this.product.id, user: UserDataManager.getEmail(), quantity: this.orderQuantity};
+      console.log(localStorage.getItem('email'));
+      let order: CreateOrder = {product: this.product.id, user: localStorage.getItem('email')!, quantity: this.orderQuantity};
       this.productService.createOrder(order).subscribe(data => console.log(data));
 
     }
