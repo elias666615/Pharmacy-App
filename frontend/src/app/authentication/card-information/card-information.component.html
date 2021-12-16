@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="title">Enter Card Information</div>
+    <div class="content">
+        <form [formGroup]="form">
+            <mat-form-field class="long_formField" appearance="standard">
+                <mat-label>Card number</mat-label>
+                <input
+                  matInput
+                  formControlName="card_number"
+                />
+            </mat-form-field>
+            <mat-form-field class="long_formField" appearance="standard">
+                <mat-label>Name on card</mat-label>
+                <input
+                  matInput
+                  formControlName="name_on_card"
+                />
+            </mat-form-field>
+            <mat-form-field class="short_formField" appearance="standard">
+                <mat-label>Expiry date</mat-label>
+                <input
+                  matInput
+                  formControlName="expiry_date"
+                />
+            </mat-form-field>
+            <mat-form-field style="margin-left: 4%;" class="short_formField" appearance="standard">
+                <mat-label>CVV</mat-label>
+                <input
+                  matInput
+                  formControlName="cvv"
+                />
+            </mat-form-field>
+        </form>
+        <div class="action">
+            <button class="add-button" mat-flat-button (click)="addCardInfo()">Add</button>
+            <button class="cancel-button" mat-flat-button (click)="close(false)">Cancel</button>
+        </div>
+    </div>
+</div>

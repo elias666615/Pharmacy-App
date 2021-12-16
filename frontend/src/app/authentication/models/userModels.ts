@@ -22,3 +22,11 @@ export interface Store {
     name: string;
     location: string;
 }
+
+export interface CardInfo {
+    user: string;
+    card_number: string;
+    expiry_pate: string;
+    name_on_card: string;
+    cvv: string;
+}

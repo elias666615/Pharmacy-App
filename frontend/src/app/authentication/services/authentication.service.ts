@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginInfo, Store, UserInfo } from '../models/userModels';
+import { CardInfo, LoginInfo, Store, UserInfo } from '../models/userModels';
 import { UserDataManager } from './userDataManager';
 
 @Injectable({
@@ -37,5 +37,13 @@ export class AuthenticationService {
       })
     };
     return this.http.get<Store>('http://127.0.0.1:8000/auth/store/?user=' + email);
+  }
+
+  fetchCardInfo(email: string) {
+    return this.http.get<CardInfo>('http://127.0.0.1:8000/auth/transfer/?user=' + email)
+  }
+
+  addCardInfo(data: CardInfo) {
+    return this.http.post('http://127.0.0.1:8000/auth/transfer/', data);
   }
 }

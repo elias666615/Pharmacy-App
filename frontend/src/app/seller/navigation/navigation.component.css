@@ -8,6 +8,7 @@
     background-color: #05386B;
     display: grid;
     grid-template-columns: 10% 10% 10%;
+    margin-bottom: 40px;
 }
 
 .navbar a {

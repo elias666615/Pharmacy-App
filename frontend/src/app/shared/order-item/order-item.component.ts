@@ -21,7 +21,7 @@ export class OrderItemComponent implements OnInit {
 
   baseUrl: string = 'http://127.0.0.1:8000';
 
-  alive: boolean = true;
+  @Input() alive: boolean | undefined = true;
 
   role: string = localStorage.getItem('role')!;
 
@@ -40,6 +40,7 @@ export class OrderItemComponent implements OnInit {
     let date_time = this.order.order_date.split('T');
     this.order_date = date_time[0];
     this.order_time = date_time[1].substring(0, 5);
+    if (this.order.alive === undefined) this.order.alive = true;
   }
 
   delay(ms: number) {

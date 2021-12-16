@@ -45,6 +45,7 @@ import { BuyerHomeComponent } from './buyer/buyer-home/buyer-home.component';
 import { BuyerOrdersComponent } from './buyer/buyer-orders/buyer-orders.component';
 import { OrderItemComponent } from './shared/order-item/order-item.component';
 import { ProductDetailsComponent } from './shared/product-details/product-details.component';
+import { CardInformationComponent } from './authentication/card-information/card-information.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { ProductDetailsComponent } from './shared/product-details/product-detail
     BuyerOrdersComponent,
     OrderItemComponent,
     ProductDetailsComponent,
+    CardInformationComponent,
   ],
   imports: [
     BrowserModule,

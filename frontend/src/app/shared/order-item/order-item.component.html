@@ -1,4 +1,4 @@
-<div [ngClass]="{'container': true, 'invisible': !alive, 'container_if_new': new}" [@kill]="alive? 'alive' : 'dead'">
+<div [ngClass]="{'container': true, 'invisible': !alive, 'container_if_new': new}" [@kill]="alive && order.alive? 'alive' : 'dead'">
     <div class="image-contianer">
         <img class="product_image" src="{{ baseUrl + order.product.image }}" alt="product image">
     </div>

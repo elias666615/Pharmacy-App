@@ -56,6 +56,7 @@ export interface Order {
     price_per_unit: number;
     quantity: number;
     order_date: string;
+    alive?: boolean;
 }
 
 export interface CreateOrder {
