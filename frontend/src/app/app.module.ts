@@ -46,6 +46,7 @@ import { BuyerOrdersComponent } from './buyer/buyer-orders/buyer-orders.componen
 import { OrderItemComponent } from './shared/order-item/order-item.component';
 import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 import { CardInformationComponent } from './authentication/card-information/card-information.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { CardInformationComponent } from './authentication/card-information/card
     OrderItemComponent,
     ProductDetailsComponent,
     CardInformationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
