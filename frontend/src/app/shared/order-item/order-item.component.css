@@ -2,10 +2,14 @@
     background-color: white;
     border-radius: 15px;
     display: grid;
-    grid-template-columns: 20% 75% 5%;
+    grid-template-columns: 25% 70% 5%;
     height: 120px;
     margin: 3% 0 3% 0;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container_if_new {
+    grid-template-columns: 25% 68% 7%;
 }
 
 .invisible {
@@ -18,7 +22,7 @@
 .product_image {
     object-fit: cover;
     height: 120px;
-    max-width: 100%;
+    min-width: 100%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
@@ -53,7 +57,6 @@
 .action {
     padding-top: 20px;
 }
-
 .action div {
     margin-top: 5px;
 }

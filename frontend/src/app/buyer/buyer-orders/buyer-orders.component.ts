@@ -1,8 +1,8 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { UserDataManager } from 'src/app/authentication/services/userDataManager';
 import { Order } from 'src/app/shared/models/productmodels';
+import { MultipurposePopupComponent } from 'src/app/shared/multipurpose-popup/multipurpose-popup.component';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-buyer-orders',
@@ -21,7 +21,8 @@ export class BuyerOrdersComponent implements OnInit {
 
   paymentMethod: string = 'cash';
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+    public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.fetchOrders();
@@ -60,6 +61,21 @@ export class BuyerOrdersComponent implements OnInit {
     this.newOrders.forEach(order => {
       const data: object = {id: order.id, state: 'wait_a'};
       this.productService.updateOrder(data).subscribe(data => console.log(data));
+    });
+  }
+
+  deleteOrder(id: number) {
+    const dialofRef = this.dialog.open(MultipurposePopupComponent, {
+      width: '500px',
+      height: '280px',
+      data: {action:'delete_o'}
+    });
+
+    dialofRef.afterClosed().subscribe(result => {
+      if(result === true) {
+        this.productService.deleteOrder(id).subscribe(() => {
+        });
+      }
     });
   }
 }

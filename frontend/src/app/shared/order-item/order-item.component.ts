@@ -28,8 +28,10 @@ export class OrderItemComponent implements OnInit {
   @Output() accepted = new EventEmitter<number>();
   @Output() rejected = new EventEmitter<number>();
   @Output() delivered = new EventEmitter<number>();
+  @Output() canceled = new EventEmitter<number>();
 
   @Input() order!: Order;
+  @Input() new: boolean = false;
   order_date: string = '';
   order_time: string = '';
   constructor() { }
@@ -60,6 +62,10 @@ export class OrderItemComponent implements OnInit {
     this.alive = false;
     await this.delay(100);
     this.delivered.emit(this.order.id);
+  }
+
+  async cancel() {
+    this.canceled.emit(this.order.id);
   }
 
 

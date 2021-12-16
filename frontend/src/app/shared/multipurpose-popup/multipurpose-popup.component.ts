@@ -10,6 +10,7 @@ export class MultipurposePopupComponent implements OnInit {
 
   title: string = '';
   message: string = '';
+  action: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<MultipurposePopupComponent>,
@@ -18,8 +19,14 @@ export class MultipurposePopupComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data.action === 'delete_p') {
+      this.action = 'Delete';
       this.title = 'Delete Product';
       this.message = 'Are you sure you want to delete this products?';
+    }
+    else if(this.data.action === 'delete_o') {
+      this.action = 'Cancel Order';
+      this.title = 'Cancel Order';
+      this.message = 'Are you sure you want to cancel this order?';
     }
   }
 

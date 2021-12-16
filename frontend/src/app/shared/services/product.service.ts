@@ -53,4 +53,8 @@ export class ProductService {
   updateOrder(data: object) {
     return this.http.put('http://127.0.0.1:8000/store/orders/', data);
   }
+
+  deleteOrder(id: number) {
+    return this.http.delete(`http://127.0.0.1:8000/store/orders/?id=${id}`);
+  }
 }

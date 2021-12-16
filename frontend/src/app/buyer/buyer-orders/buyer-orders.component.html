@@ -1,44 +1,41 @@
 <div class="container">
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="New">
-          <div class="tab-container new-container">
+          <div class="new-container">
             <div class="orders-new-container">
-              <app-order-item *ngFor="let order of newOrders" [order]="order"></app-order-item>
+              <app-order-item [new]="true" *ngFor="let order of newOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
            </div>
             <div class="checkout-container">
-              <span class="checkout-info">You have {{ numberOfNewOrders }} orders</span>
+              <p class="checkout-info">You have {{ numberOfNewOrders }} orders</p>
+              <p class="checkout-info">Total: {{ total }} LBP</p>
               <br>
-              <span class="checkout-info">Total: {{ total }} LBP</span>
-              <br>
-              <span class="checkout-info">Payment method</span>
-              <!-- <mat-form-field appearance="standard"> -->
-                <mat-select [(ngModel)]="paymentMethod">
-                  <mat-option value="cash">Cash on delivery</mat-option>
-                  <mat-option value="card">Credit Card</mat-option>
-                </mat-select>
-              <!-- </mat-form-field> -->
+              <p class="checkout-info">Payment method</p>
+              <mat-select [(ngModel)]="paymentMethod">
+                <mat-option value="cash">Cash on delivery</mat-option>
+                <mat-option value="card">Credit Card</mat-option>
+              </mat-select>
               <br>
               <button mat-flat-button (click)="checkOut()">Checkout</button>
             </div>
           </div>
         </mat-tab>
         <mat-tab label="Waiting for accept">
-          <div class="orders-new-container">
-            <app-order-item *ngFor="let order of waitAOrders" [order]="order"></app-order-item>
+          <div class="tab-container">
+            <app-order-item *ngFor="let order of waitAOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Waiting to be delivered">
-          <div class="orders-new-container">
-            <app-order-item *ngFor="let order of waitDOrders" [order]="order"></app-order-item>
+          <div class="tab-container">
+            <app-order-item *ngFor="let order of waitDOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Delivered">
-          <div class="orders-new-container">
+          <div class="tab-container">
             <app-order-item *ngFor="let order of deliveredOrders" [order]="order"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Rejected">
-          <div class="orders-new-container">
+          <div class="tab-container">
             <app-order-item *ngFor="let order of rejectedOrders" [order]="order"></app-order-item>
          </div>
         </mat-tab>
