@@ -48,6 +48,7 @@ export class SalesComponent implements OnInit {
     const order = this.waitAOrders.find(order => order.id === id);
     if(order != undefined) {
       const idx = this.waitAOrders.indexOf(order);
+      order.state = 'wait_d';
       this.waitAOrders.splice(idx, 1);
       this.waitDOrders.push(order);
     }
@@ -59,6 +60,7 @@ export class SalesComponent implements OnInit {
     const order = this.waitAOrders.find(order => order.id === id);
     if(order != undefined) {
       const idx = this.waitAOrders.indexOf(order);
+      order.state = 'reject';
       this.waitAOrders.splice(idx, 1);
       this.rejectedOrders.push(order);
     }
@@ -67,6 +69,13 @@ export class SalesComponent implements OnInit {
   deliverOrder(id: number) {
     const data = {id: id, state: 'del'};
     this.productService.updateOrder(data).subscribe(data => console.log(data));
+    const order = this.waitDOrders.find(order => order.id === id);
+    if(order != undefined) {
+      const idx = this.waitDOrders.indexOf(order);
+      order.state = 'del';
+      this.waitDOrders.splice(idx, 1);
+      this.deliveredOrders.push(order);
+    }
   }
 
 }

@@ -1,13 +1,13 @@
 .container {
-    display: grid;
-    grid-template-columns: 10% 90%;
     height: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .navbar {
-    /* box-shadow: 2px 0 5px rgba(44, 44, 44, 0.5); */
-    background-color: #2ba6b6;
+  height: 39px;
+    background-color: #05386B;
+    display: grid;
+    grid-template-columns: 10% 10% 10%;
 }
 
 .navbar a {
@@ -15,11 +15,19 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     letter-spacing: 0.5px;
+    font-size: 18px;
+    
     /* color: white; */
 }
 
+.navbar a div {
+  text-align: center;
+  padding: 5% 0 5% 0;
+}
+
 .content {
-    overflow-y: hidden;
+  height: calc(100vh - 39px);
+    overflow-y: scroll;
 }
 
 /* width */

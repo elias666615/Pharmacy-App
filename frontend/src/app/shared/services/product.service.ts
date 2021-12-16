@@ -13,8 +13,13 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getSellerProducts(store_id: number) {
-    return this.http.get<Product[]>(this.productUrl + '?store_id=' + store_id.toString());
+  getSellerProducts(store_id: number, search: string, sort: string, category: string, type: string) {
+    return this.http.get<Product[]>(this.productUrl + 
+      '?store_id=' + store_id.toString() + 
+      '&search=' + search +
+      '&sort=' + sort +
+      '&category=' + category +
+      '&type=' + type);
   }
 
   getProductById(id: number) {

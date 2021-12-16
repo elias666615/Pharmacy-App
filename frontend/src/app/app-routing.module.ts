@@ -19,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: BuyerHomeComponent },
       { path: 'orders', component: BuyerOrdersComponent },
+      { path: 'product/:id', component: ProductDetailsComponent },
     ] 
   },
   {
@@ -29,7 +30,6 @@ const routes: Routes = [
       { path: 'sales', component: SalesComponent },
     ]
   },
-  { path: 'product/:id', component: ProductDetailsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

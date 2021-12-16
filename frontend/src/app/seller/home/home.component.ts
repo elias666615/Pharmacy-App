@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog,) { }
 
   ngOnInit(): void {
-    this.fetchProducts(2);
+    this.fetchProducts();
     this.fetchLookups();
     console.log(this.products)
   }
@@ -58,17 +58,8 @@ export class HomeComponent implements OnInit {
     this.add_drawer_open = !this.add_drawer_open;
   }
 
-  filterProducts() {
-    if(this.searchValue === '' || this.searchValue === null) {
-      this.filteredProducts = this.products;
-    }
-    else {
-      this.filteredProducts = this.products.filter(product => product.name.toLowerCase().includes(this.searchValue.toLowerCase()));
-    }
-  }
-
-  fetchProducts(store_id: number) {
-    this.productService.getSellerProducts(store_id).subscribe((data: Product[]) => {this.products = data, this.filteredProducts = data} );
+  fetchProducts() {
+    this.productService.getSellerProducts(Number(localStorage.getItem('store')), this.searchValue, this.sortValue, this.categoryValue, this.typeValue).subscribe((data: Product[]) => {this.products = data, this.filteredProducts = data} );
   }
 
   fetchLookups() {
@@ -95,7 +86,7 @@ export class HomeComponent implements OnInit {
 
   productUpdated(product: Product) {
     this.update_drawer_open = false;
-    this.fetchProducts(2);
+    this.fetchProducts();
   }
 
   deleteProduct(product: Product) {
@@ -108,7 +99,7 @@ export class HomeComponent implements OnInit {
     dialofRef.afterClosed().subscribe(result => {
       if(result === true) {
         this.productService.deleteProduct(product.id).subscribe(() => {
-          this.fetchProducts(2);
+          this.fetchProducts();
         });
       }
     });

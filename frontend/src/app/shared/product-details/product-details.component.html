@@ -1,10 +1,23 @@
 <div *ngIf="!loading" class="container">
-    <img class="product-image" src="{{ baseURL + product.image }}" alt="product image">
-    <p>{{ product.description }}</p>
-    <p>{{ product.price_per_unit }} LBP</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Quantity</mat-label>
-        <input matInput type="number" [(ngModel)]="orderQuantity">
-      </mat-form-field>
-      <button mat-flat-button (click)="addToOrders()">Add to Orders</button>
+  <div class="product-display-container">
+    <div class="image-container">
+      <img class="product-image" src="{{ baseURL + product.image }}" alt="product image">
+    </div>
+    <div class="product_info_container">
+      <p class="product-name">{{ product.name }}</p>
+      <p class="product-description">{{ product.description }}</p>
+      <div class="price_info">
+        <p *ngIf="price" class="discounted_price">{{ price }} LBP</p>
+      <br *ngIf="price">
+        <span [ngClass]="{'price': true, 'crossed': price}">{{ product.price_per_unit }} LBP</span>
+        <span *ngIf="price" class="discount">-{{ product.discount }}%</span>
+      </div>
+      <mat-form-field appearance="standard">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" [(ngModel)]="orderQuantity" min="0">
+        </mat-form-field>
+        <button class="add-order-btn" mat-flat-button (click)="addToOrders()">Add to Orders</button>
+        <p class="total">Total: {{ total }} LBP</p>
+    </div> 
+  </div>
 </div>

@@ -18,7 +18,7 @@ export class BuyerHomeComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.productService.getSellerProducts(2).subscribe((data: Product[]) => this.products = data);
+    this.productService.getSellerProducts(2, '', 'name', '', '').subscribe((data: Product[]) => this.products = data);
   }
 
 }

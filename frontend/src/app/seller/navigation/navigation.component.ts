@@ -9,16 +9,12 @@ import { Router } from '@angular/router';
   animations: [
     trigger('selectUnselect', [
       state('selected', style({
-        backgroundColor: '#3FEEE6',
-        padding: '25px 0 25px 12%',
-        fontSize: '23px',
+        backgroundColor: '#5CDB95',
         color: 'white',
       })),
       state('unselected', style({
-        backgroundColor: '#2ba6b6',
-        padding: '20px 0 20px 10%',
-        fontSize: '20px',
-        color: '#CAFAFE',
+        backgroundColor: '#05386B',
+        color: '#EDF5E1',
       })),
       transition('selected => unselected', [animate('0.1s')]),
       transition('unselected => selected', animate('0.1s')),

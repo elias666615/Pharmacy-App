@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   loading: boolean = true;
   id!: number;
   product!: Product;
-
+  price!: number;
   baseURL: string = 'http://127.0.0.1:8000';
 
   orderQuantity: number = 0;
@@ -27,8 +27,17 @@ export class ProductDetailsComponent implements OnInit {
     this.fetchProduct();
   }
 
+  get total() {
+    return this.product.price_per_unit * this.orderQuantity;
+  }
+
   fetchProduct() {
-    this.productService.getProductById(this.id).subscribe((data: Product) => {this.product = data; this.loading = false;});
+    this.productService.getProductById(this.id).subscribe((data: Product) => {
+      this.product = data;
+      if(this.product.discount > 0) {
+        this.price = Math.round(this.product.price_per_unit - (this.product.price_per_unit * this.product.discount / 100));
+      }
+      this.loading = false;});
   }
 
   addToOrders() {

@@ -1,9 +1,9 @@
 .container {
-    width: 150px;
+    width: 140px;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
 }
 
 .image {
-    width: 22px;
+    width: 20px;
 }

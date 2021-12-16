@@ -11,9 +11,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       state('alive', style({
       })),
       state('dead', style({
-        opacity: '0',
+        height: '0px',
       })),
-      transition('alive => dead', [animate('0.2s')]),
+      transition('alive => dead', [animate('0.1s')]),
     ])
   ]
 })
@@ -27,7 +27,7 @@ export class OrderItemComponent implements OnInit {
 
   @Output() accepted = new EventEmitter<number>();
   @Output() rejected = new EventEmitter<number>();
-  @Output() deliver = new EventEmitter<number>();
+  @Output() delivered = new EventEmitter<number>();
 
   @Input() order!: Order;
   order_date: string = '';
@@ -46,9 +46,22 @@ export class OrderItemComponent implements OnInit {
 
   async accept() {
     this.alive = false;
-    await this.delay(201);
+    await this.delay(100);
     this.accepted.emit(this.order.id);
   }
+
+  async reject() {
+    this.alive = false;
+    await this.delay(100);
+    this.rejected.emit(this.order.id);
+  }
+
+  async deliver() {
+    this.alive = false;
+    await this.delay(100);
+    this.delivered.emit(this.order.id);
+  }
+
 
   ngOnDestroy() {
     this.alive = false;

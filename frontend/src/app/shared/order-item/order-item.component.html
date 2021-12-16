@@ -1,21 +1,26 @@
-<div class="container" [@kill]="alive? 'alive' : 'dead'">
+<div [ngClass]="{'container': true, 'invisible': !alive}" [@kill]="alive? 'alive' : 'dead'">
     <div class="image-contianer">
-        <img class="product_image" mat-card-image src="{{ baseUrl + order.product.image }}" alt="product image">
+        <img class="product_image" src="{{ baseUrl + order.product.image }}" alt="product image">
     </div>
     <div class="information-container">
         <h1 class="product-name">{{ order.product.name }}</h1>
         <h1 class="datetime">order placed on {{ order_date }} at {{ order_time }}</h1>
-        <h1 class="total">cost: {{ order.quantity * order.price_per_unit }} LBP</h1>
+        <h1 class="total">total cost: {{ order.quantity * order.price_per_unit }} LBP</h1>
     </div>
     <div class="action" *ngIf="(order.state === 'new' || order.state === 'wait_a' || order.state === 'wait_d') && role === 'BYR'">
         <mat-icon>delete</mat-icon>
     </div>
     <div class="action" *ngIf="order.state === 'wait_a' && role === 'SLR'">
-        <mat-icon (click)="accept()">done</mat-icon>
-        <br>
-        <mat-icon (click)="rejected.emit(order.id)">close</mat-icon>
+        <div>
+            <img class="accept" (click)="accept()" src="../../../assets/accept.png" alt="">
+        </div>
+        <div>
+           <img class="reject" (click)="reject()" src="../../../assets/reject.png" alt=""> 
+        </div>
     </div>
     <div class="action" *ngIf="order.state === 'wait_d' && role === 'SLR'">
-        <mat-icon (click)="deliver.emit(order.id)">local_shipping</mat-icon>
-    </div>
+        <div>
+            <img style="padding: 5px;" class="deliver" src="../../../assets/deliver.png" (click)="deliver()" alt="">
+        </div>
+    <div>
 </div>

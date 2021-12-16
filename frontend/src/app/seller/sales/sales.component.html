@@ -8,15 +8,20 @@
         </div>
       </mat-tab>
       <mat-tab label="Waiting for delivery">
-        <div class="orders-new-container">
-          <app-order-item *ngFor="let order of waitDOrders" [order]="order" (deliver)="deliverOrder($event)"></app-order-item>
-       </div>
+        <div class="tab-container">
+            <app-order-item *ngFor="let order of waitDOrders" [order]="order" (delivered)="deliverOrder($event)"></app-order-item>
+        </div>
       </mat-tab>
-      <mat-tab label="Delivered">
-        <app-order-item *ngFor="let order of deliveredOrders" [order]="order"></app-order-item>
-      </mat-tab>
+        <mat-tab label="Delivered">
+          <div class="tab-container">
+            <app-order-item *ngFor="let order of deliveredOrders" [order]="order"></app-order-item>
+          </div>  
+        </mat-tab>
+          
       <mat-tab label="Rejected">
-        <app-order-item *ngFor="let order of rejectedOrders" [order]="order" (deliver)="deliverOrder($event)"></app-order-item>
+        <div class="tab-container">
+          <app-order-item *ngFor="let order of rejectedOrders" [order]="order"></app-order-item>
+        </div>
       </mat-tab>
     </mat-tab-group>
 </div>

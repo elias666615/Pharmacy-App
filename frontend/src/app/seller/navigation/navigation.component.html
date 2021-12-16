@@ -7,7 +7,7 @@
       <div [@selectUnselect]="urlPath === 'profile'? 'selected' : 'unselected'" class="nav-button"><span>Profile</span></div>
     </a>
     <a (click)="switchRoute('sales')" routerLink="sales" routerLinkActive="active">
-      <div [@selectUnselect]="urlPath === 'sales'? 'selected' : 'unselected'" class="nav-button"><span>Sales</span></div>
+      <div [@selectUnselect]="urlPath === 'sales'? 'selected' : 'unselected'" class="nav-button"><span>Orders</span></div>
     </a>
 </div>
   <div class="content"><router-outlet></router-outlet></div>

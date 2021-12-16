@@ -5,6 +5,7 @@
       <mat-card-title class="product-name">{{ product.name }}</mat-card-title>
       <mat-card-subtitle class="product-price">
         <span *ngIf="price" class="discounted_price">{{ price }} LBP</span>
+        <br>
         <span [ngClass]="{'crossed': price}">{{ product.price_per_unit }} LBP</span>
         <span *ngIf="price" class="discount">-{{ product.discount }}%</span>
       </mat-card-subtitle>

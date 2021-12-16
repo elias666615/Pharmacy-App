@@ -1,7 +1,7 @@
 <div class="container">
     <div class="top-bar">
         <mat-form-field appearance="standard" class="search_field">
-            <input matInput placeholder="Search for product" type="text" [(ngModel)]="searchValue" (ngModelChange)="filterProducts()">
+            <input matInput placeholder="Search for product" type="text" [(ngModel)]="searchValue" (ngModelChange)="fetchProducts()">
             <button class="close_button" *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear"
                 (click)="searchValue=''">
                 <mat-icon>close</mat-icon>
@@ -9,24 +9,24 @@
         </mat-form-field>
         <mat-form-field appearance="standard" class="select_field">
             <mat-label>Sort by</mat-label>
-            <mat-select [(ngModel)]="sortValue">
+            <mat-select [(ngModel)]="sortValue" (ngModelChange)="fetchProducts()">
                 <mat-option value="name">Name</mat-option>
-                <mat-option value="price">Price</mat-option>
+                <mat-option value="price_per_unit">Price</mat-option>
                 <mat-option value="rating">Rating</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="standard" class="select_field">
             <mat-label>Category</mat-label>
-            <mat-select [(ngModel)]="categoryValue">
+            <mat-select [(ngModel)]="categoryValue" (ngModelChange)="fetchProducts()">
                 <mat-option value="">All</mat-option>
-                <mat-option *ngFor="let category of subcategories" value="category.id">{{ category.description }}</mat-option>
+                <mat-option *ngFor="let category of subcategories" [value]="category.id">{{ category.description }}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="standard" class="select_field">
             <mat-label>Type</mat-label>
-            <mat-select [(ngModel)]="typeValue">
+            <mat-select [(ngModel)]="typeValue" (ngModelChange)="fetchProducts()">
                 <mat-option value="">All</mat-option>
-                <mat-option *ngFor="let type of types" value="type.id">{{ type.title }}</mat-option>
+                <mat-option *ngFor="let type of types" [value]="type.id">{{ type.title }}</mat-option>
             </mat-select>
         </mat-form-field>
         <button mat-flat-button color="primary" class="add_product_button" (click)="toggleAddDrawer()">Add
