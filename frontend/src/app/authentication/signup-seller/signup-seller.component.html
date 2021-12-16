@@ -63,12 +63,12 @@
           mat-raised-button
           (click)="browseImage()"
         >
-          Browse Image
+          Upload License
         </button>
         <span>{{ imageFileName }}</span>
       </div>
     </form>
-    <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="image/*" />
+    <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="file/*" />
     <div>
         <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>
       </div>
