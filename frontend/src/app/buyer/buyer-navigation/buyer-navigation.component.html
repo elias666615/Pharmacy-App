@@ -1,17 +1,33 @@
 <div class="container">
-    <div class="navbar">
-      <a routerLink="home" routerLinkActive="active">
-        <div class="nav-button"><span>Home</span></div>
+  <div class="navbar">
+    <div class="grid-item">
+      <a (click)="switchRoute('home')" routerLink="home" routerLinkActive="active">
+        <div [@selectUnselect]="urlPath === 'home'? 'selected' : 'unselected'" class="nav-button"><span>Home</span>
+        </div>
       </a>
-      <a routerLink="profile" routerLinkActive="active">
-        <div class="nav-button"><span>Profile</span></div>
+    </div>
+    <div class="grid-item">
+      <a (click)="switchRoute('profile')" routerLink="profile" routerLinkActive="active">
+        <div [@selectUnselect]="urlPath === 'profile'? 'selected' : 'unselected'" class="nav-button">
+          <span>Profile</span>
+        </div>
       </a>
-      <a routerLink="orders" routerLinkActive="active">
-        <div class="nav-button"><span>Orders</span></div>
+    </div>
+    <div class="grid-item">
+      <a (click)="switchRoute('orders')" routerLink="orders" routerLinkActive="active">
+        <div [@selectUnselect]="urlPath === 'orders'? 'selected' : 'unselected'" class="nav-button"><span>Orders</span>
+        </div>
       </a>
-      <a routerLink="buy_later" routerLinkActive="active">
-        <div class="nav-button"><span>Buy Later</span></div>
+    </div>
+    <div class="grid-item">
+      <a (click)="switchRoute('buy_later')" routerLink="buy_later" routerLinkActive="active">
+        <div [@selectUnselect]="urlPath === 'buy_later'? 'selected' : 'unselected'" class="nav-button"><span>Buy
+            Later</span>
+        </div>
       </a>
+    </div>
   </div>
-    <div class="content"><router-outlet></router-outlet></div>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
+</div>

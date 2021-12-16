@@ -2,3 +2,27 @@
     height: 100vh;
     overflow-y: hidden;
 }
+.navbar{
+    padding-left: 5%;
+    display: grid;
+    grid-template-columns: 8% 8% 8% 8%;
+    background-color: #2ba6b6;  
+
+}
+.grid-item {
+    text-align: center;
+  }
+ 
+.grid-item a {   
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color : white;
+
+}
+
+.grid-item a div{
+    padding:6% 2% 6% 2%;
+   
+}
