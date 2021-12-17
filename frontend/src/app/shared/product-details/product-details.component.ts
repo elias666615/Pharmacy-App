@@ -1,3 +1,4 @@
+import { RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserDataManager } from 'src/app/authentication/services/userDataManager';
@@ -31,6 +32,10 @@ export class ProductDetailsComponent implements OnInit {
     return this.product.price_per_unit * this.orderQuantity;
   }
 
+  get addButtonDisabled() {
+    return this.orderQuantity <= 0;
+  }
+
   fetchProduct() {
     this.productService.getProductById(this.id).subscribe((data: Product) => {
       this.product = data;
@@ -44,7 +49,9 @@ export class ProductDetailsComponent implements OnInit {
     if(this.orderQuantity > 0) {
       console.log(localStorage.getItem('email'));
       let order: CreateOrder = {product: this.product.id, user: localStorage.getItem('email')!, quantity: this.orderQuantity};
-      this.productService.createOrder(order).subscribe(data => console.log(data));
+      this.productService.createOrder(order).subscribe(data => {
+        this.orderQuantity = 0;
+      });
 
     }
   }

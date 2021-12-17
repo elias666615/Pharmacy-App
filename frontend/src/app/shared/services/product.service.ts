@@ -57,4 +57,8 @@ export class ProductService {
   deleteOrder(id: number) {
     return this.http.delete(`http://127.0.0.1:8000/store/orders/?id=${id}`);
   }
+  
+  getCommercialProducts(type: string, category: number) {
+    return this.http.get<Product[]>('http://127.0.0.1:8000/store/commercial_products/?type=' + type + '&category=' + category);
+  }
 }

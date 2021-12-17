@@ -1,3 +1,32 @@
 <div class="container">
-    <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of products"><product [product]=product></product></a>
+    <div class="top-bar">
+        <mat-form-field appearance="standard" class="search_field">
+            <input matInput placeholder="Search for product" type="text" [(ngModel)]="searchValue">
+            <button class="close_button" *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear"
+                (click)="searchValue=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="search_button">Search</button>
+        <button mat-button [matMenuTriggerFor]="menu" class="categories_button">Categories</button>
+            <mat-menu #menu="matMenu">
+                <a class="category-menu-item" *ngFor="let category of categories" mat-menu-item>{{ category.description }}</a>
+            </mat-menu>
+    </div>
+    <div class="header">
+        <p>Best Sellers</p>
+    </div>
+    <div class="products-container">
+        <div class="arrow">
+            <img src="assets/arrow-left-96.png" alt="">
+        </div>
+        <div class="products">
+            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of products"><product [product]=product></product></a>
+        </div>
+        <div class="arrow">
+            <img src="assets/arrow-right-96.png" alt="">
+        </div>
+    </div>
+    
 </div>
+

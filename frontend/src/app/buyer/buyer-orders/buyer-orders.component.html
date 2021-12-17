@@ -3,7 +3,7 @@
         <mat-tab label="New">
           <div class="new-container">
             <div class="orders-new-container">
-              <app-order-item [alive]="order.alive" [new]="true" *ngFor="let order of newOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
+              <app-order-item [new]="true" *ngFor="let order of newOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
            </div>
             <div class="checkout-container">
               <p class="checkout-info">You have {{ numberOfNewOrders }} orders</p>
@@ -15,7 +15,7 @@
                 <mat-option value="card">Credit Card</mat-option>
               </mat-select>
               <br>
-              <button mat-flat-button (click)="checkOut()">Checkout</button>
+              <button mat-flat-button (click)="checkOut()" [disabled]="checkoutDisabled">Checkout</button>
             </div>
           </div>
         </mat-tab>

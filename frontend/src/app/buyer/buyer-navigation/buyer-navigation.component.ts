@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/shared/models/productmodels';
+import { LookupsService } from 'src/app/shared/services/lookups.service';
 
 @Component({
   selector: 'app-buyer-navigation',
@@ -23,9 +25,9 @@ import { Router } from '@angular/router';
 })
 export class BuyerNavigationComponent implements OnInit {
   urlPath: string = '';
-
   constructor(
     private route: Router,
+    private lookupsService: LookupsService,
   ) { }
   ngOnInit(): void {
     this.urlPath = this.route.url.split('/')[2];

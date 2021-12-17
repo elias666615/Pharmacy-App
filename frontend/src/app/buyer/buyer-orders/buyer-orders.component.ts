@@ -36,6 +36,10 @@ export class BuyerOrdersComponent implements OnInit {
     return this.newOrders.length;
   }
 
+  get checkoutDisabled(): boolean {
+    return this.numberOfNewOrders <= 0;
+  }
+
   
   ngOnChanges() {
     console.log('changes occured');
@@ -67,28 +71,40 @@ export class BuyerOrdersComponent implements OnInit {
   }
 
   checkOut() {
-    this.authService.fetchCardInfo(localStorage.getItem('email')!).subscribe(data => {
-      if(data === null) {
-        const dialofRef = this.dialog.open(CardInformationComponent, {
-          width: '550px',
-          height: '450px',
-          data: {}
-        });
-    
-        dialofRef.afterClosed().subscribe(result => {
-          if(result === true) {
-            this.newOrders.forEach(order => {
-              const data: object = {id: order.id, state: 'wait_a'};
-              this.productService.updateOrder(data).subscribe(data => {
-                order.state = 'wait_a';
-                this.waitAOrders.push(order);
+    if(this.paymentMethod === 'card') {
+      this.authService.fetchCardInfo(localStorage.getItem('email')!).subscribe(data => {
+        if(data === null) {
+          const dialofRef = this.dialog.open(CardInformationComponent, {
+            width: '550px',
+            height: '450px',
+            data: {}
+          });
+      
+          dialofRef.afterClosed().subscribe(result => {
+            if(result === true) {
+              this.newOrders.forEach(order => {
+                const data: object = {id: order.id, state: 'wait_a'};
+                this.productService.updateOrder(data).subscribe(data => {
+                  order.state = 'wait_a';
+                  this.waitAOrders.push(order);
+                });
               });
-            });
-            this.newOrders = [];
-          }
+              this.newOrders = [];
+            }
+          });
+        }
+      });
+    }
+    else if(this.paymentMethod === 'cash') {
+      this.newOrders.forEach(order => {
+        const data: object = {id: order.id, state: 'wait_a'};
+        this.productService.updateOrder(data).subscribe(data => {
+          order.state = 'wait_a';
+          this.waitAOrders.push(order);
         });
-      }
-    });
+      });
+      this.newOrders = [];
+    }
   }
 
   delay(ms: number) {
@@ -107,8 +123,6 @@ export class BuyerOrdersComponent implements OnInit {
         this.productService.deleteOrder(id).subscribe(() => {
           var order = this.newOrders.find(o => o.id = id);
           if(order != undefined) {
-            order.alive = false;
-            this.delay(101);
             const idx = this.newOrders.indexOf(order);
             this.newOrders.splice(idx, 1);
             return;
@@ -116,16 +130,12 @@ export class BuyerOrdersComponent implements OnInit {
           order = this.waitAOrders.find(o => o.id = id);
           if(order != undefined) {
             console.log('found in wait A');
-            order.alive = false;
-            this.delay(101);
             const idx = this.waitAOrders.indexOf(order);
             this.waitAOrders.splice(idx, 1);
             return;
           }
           order = this.waitDOrders.find(o => o.id = id);
           if(order != undefined) {
-            order.alive = false;
-            this.delay(101);
             const idx = this.waitDOrders.indexOf(order);
             this.waitDOrders.splice(idx, 1);
             return;

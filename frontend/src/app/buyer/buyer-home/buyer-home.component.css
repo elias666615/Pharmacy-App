@@ -1,0 +1,88 @@
+.container {
+    height: calc(100vh - 79px);
+    overflow-y: scroll;
+    padding-top: 40px;
+}
+
+.top-bar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 2px rgba(197, 197, 197, 0.9);
+    font-size: 18px;
+    margin: 0 25% 100px 25%;
+    padding: 0 2% 0 2%;
+}
+
+mat-option {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.search_button {
+    padding: 5px 0 5px 0;
+    margin-left: 3%;
+    width: 15%;
+    font-size: 20px;
+    background-color: #5CDB95;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    font-weight: 500;
+}
+
+.categories_button {
+    padding: 3px 0 3px 0;
+    margin-left: 3%;
+    width: 19%;
+    font-size: 20px;
+    background-color: white;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    font-weight: 500;
+    border: solid rgb(49, 49, 49) 2px;
+}
+
+.category-menu-item {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+}
+
+.search_field {
+    font-family: 'Ubuntu', sans-serif;
+    padding-top: 0;
+    width: 60%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    padding: 1% 26% 1% 26%;
+}
+
+.header p {
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    margin: 1% 22% 1% 22%;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-evenly;
+}
+
+.arrow {
+    height: 100%;
+    vertical-align: middle;
+    
+}
+
+.arrow img {
+    height: 16%;
+    padding-top: 256%;
+}
