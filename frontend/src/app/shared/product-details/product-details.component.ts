@@ -51,7 +51,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   get total() {
-    return this.product.price_per_unit * this.orderQuantity;
+    return (this.product.price_per_unit - (this.product.price_per_unit * this.product.discount / 100)) * this.orderQuantity;
   }
 
   get addButtonDisabled() {
@@ -117,7 +117,7 @@ export class ProductDetailsComponent implements OnInit {
       updateForm.append('update_type', 'change_rating');
       updateForm.append('rating_num', JSON.stringify(new_rating_num));
       updateForm.append('overall_rating', JSON.stringify(Math.round(new_overall)));
-
+      this.product.overall_rating = new_overall;
       this.productService.updateProduct(updateForm).subscribe(data => {
         const new_store_rating = ((this.product.store.rating * this.product.store.rating_num) + this.rating) / ++this.product.store.rating_num;
         const updatStoreData: object = {

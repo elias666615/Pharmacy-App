@@ -1,9 +1,10 @@
 .container {
     height: 100vh;
     overflow-y: hidden;
+    display: grid;
+    grid-template-rows: auto auto;
 }
 .navbar{
-    height: 39px;
     background-color: #05386B;
     display: grid;
     grid-template-columns: 10% 10% 10% 10%;
@@ -40,4 +41,8 @@
 .grid-item a div{
     text-align: center;
     padding: 5% 0 5% 0;  
+}
+
+.content {
+    overflow-y: scroll;
 }

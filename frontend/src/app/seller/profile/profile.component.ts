@@ -14,8 +14,6 @@ export class ProfileComponent implements OnInit {
   user!: UserInfo;
   loading1: boolean = true;
   loading2: boolean = true;
-  @ViewChild('storeName') storeNameInput!: ElementRef<HTMLInputElement>;
-  @ViewChild('storeLocation') storeLocationInput!: ElementRef<HTMLInputElement>;
 
   saveStoreInfoDisabled: boolean = true;
 

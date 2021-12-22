@@ -88,6 +88,39 @@
         />
         <mat-error *ngIf="signupForm.controls['location'].hasError('required')">Location is required</mat-error>
       </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Account Number</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="account_number"
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['account_number'].hasError('required')">Account number is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Account Holder Name</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="account_holder_name"
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['account_holder_name'].hasError('required')">Account holder name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Name of Bank</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="name_of_bank"
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['name_of_bank'].hasError('required')">Account number is required</mat-error>
+      </mat-form-field>
     </form>
     <div>
         <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>

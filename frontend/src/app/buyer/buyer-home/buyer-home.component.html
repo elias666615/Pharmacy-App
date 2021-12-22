@@ -27,6 +27,50 @@
             <img src="assets/arrow-right-96.png" alt="">
         </div>
     </div>
-    
+
+    <div class="header">
+        <p>Best in Antibiotics</p>
+    </div>
+    <div class="products-container">
+        <div class="arrow" (click)="rotateAntiBio()">
+            <img src="assets/arrow-left-96.png" alt="">
+        </div>
+        <div class="products">
+            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of antibioticDisplayed"><product class="product" [product]=product></product></a>
+        </div>
+        <div class="arrow" (click)="rotateAntiBio()">
+            <img src="assets/arrow-right-96.png" alt="">
+        </div>
+    </div>
+
+    <div class="header">
+        <p>Best in Laxitives</p>
+    </div>
+    <div class="products-container">
+        <div class="arrow" (click)="rotateLaxitives()">
+            <img src="assets/arrow-left-96.png" alt="">
+        </div>
+        <div class="products">
+            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of laxitiveDisplayed"><product class="product" [product]=product></product></a>
+        </div>
+        <div class="arrow" (click)="rotateLaxitives()">
+            <img src="assets/arrow-right-96.png" alt="">
+        </div>
+    </div>
+
+    <div class="header">
+        <p>Best in Antiemetics</p>
+    </div>
+    <div class="products-container">
+        <div class="arrow" (click)="rotateAntiEmetics()">
+            <img src="assets/arrow-left-96.png" alt="">
+        </div>
+        <div class="products">
+            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of antiemeticsDisplayed"><product class="product" [product]=product></product></a>
+        </div>
+        <div class="arrow" (click)="rotateAntiEmetics()">
+            <img src="assets/arrow-right-96.png" alt="">
+        </div>
+    </div>
 </div>
 

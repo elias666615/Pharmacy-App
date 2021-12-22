@@ -26,6 +26,7 @@ export class AuthenticationService {
         Authorization: 'Bearer ' + localStorage.getItem('access')
       })
     };
+    console.log(localStorage.getItem('access'))
     return this.http.get<UserInfo>('http://127.0.0.1:8000/auth/user/?email=' + email, httpOptions);
   }
 
@@ -36,7 +37,7 @@ export class AuthenticationService {
         Authorization: 'Bearer ' + localStorage.getItem("access")
       })
     };
-    return this.http.get<Store>('http://127.0.0.1:8000/auth/store/?user=' + email, httpOptions);
+    return this.http.get<Store>('http://127.0.0.1:8000/auth/store/?user=' + email);
   }
 
   updateStore(data: object) {
@@ -46,7 +47,7 @@ export class AuthenticationService {
         Authorization: 'Bearer ' + localStorage.getItem("access")
       })
     };
-    return this.http.put('http://127.0.0.1:8000/auth/store/', data, httpOptions);
+    return this.http.put('http://127.0.0.1:8000/auth/store/', data);
   }
 
   fetchCardInfo(email: string) {
@@ -56,7 +57,7 @@ export class AuthenticationService {
         Authorization: 'Bearer ' + localStorage.getItem("access")
       })
     };
-    return this.http.get<CardInfo>('http://127.0.0.1:8000/auth/transfer/?user=' + email, httpOptions)
+    return this.http.get<CardInfo>('http://127.0.0.1:8000/auth/transfer/?user=' + email)
   }
 
   addCardInfo(data: CardInfo) {
@@ -66,6 +67,6 @@ export class AuthenticationService {
         Authorization: 'Bearer ' + localStorage.getItem("access")
       })
     };
-    return this.http.post('http://127.0.0.1:8000/auth/transfer/', data, httpOptions);
+    return this.http.post('http://127.0.0.1:8000/auth/transfer/', data);
   }
 }

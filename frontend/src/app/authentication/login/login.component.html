@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="reset">
 
 
     <div class="tilte-container">
@@ -21,10 +21,10 @@
                 <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
             </mat-form-field>
         </form>
-
+<!-- 
         <div class="Checkbox">
             <mat-checkbox  [(ngModel)]="StayLoggedIn">Stay logged in</mat-checkbox>
-        </div>
+        </div> -->
 
         <button (click)="login()" class="login-button" mat-raised-button>Login</button>
 

@@ -50,6 +50,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { OrderDetailsComponent } from './shared/order-details/order-details.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductSearchComponent } from './buyer/product-search/product-search.component';
+import { BuyerProfileComponent } from './buyer/buyer-profile/buyer-profile.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { ProductSearchComponent } from './buyer/product-search/product-search.co
     FooterComponent,
     OrderDetailsComponent,
     ProductSearchComponent,
+    BuyerProfileComponent,
   ],
   imports: [
     BrowserModule,

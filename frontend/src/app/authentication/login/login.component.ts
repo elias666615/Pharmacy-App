@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +14,7 @@ import { UserDataManager } from '../services/userDataManager';
 export class LoginComponent implements OnInit {
   loginFailed: boolean = false;
   StayLoggedIn: boolean = false;
+  reset: boolean = true;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
@@ -38,12 +40,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access', data.Accesstoken);
         localStorage.setItem('refresh', data.Refreshtoken);
 
-        console.log(this.StayLoggedIn);
-        if(this.StayLoggedIn === true) {
-          localStorage.setItem('email', data.email);
-          localStorage.setItem('access', data.Accesstoken);
-          localStorage.setItem('refresh', data.Refreshtoken);
-        }
+        // console.log(this.StayLoggedIn);
+        // if(this.StayLoggedIn === true) {
+          // localStorage.setItem('email', data.email);
+          // localStorage.setItem('access', data.Accesstoken);
+          // localStorage.setItem('refresh', data.Refreshtoken);
+        
 
         this.authService.fetchUser(localStorage.getItem('email')!).subscribe((data: UserInfo) =>{
           localStorage.setItem('role', data.role.code);
@@ -55,10 +57,12 @@ export class LoginComponent implements OnInit {
           if(localStorage.getItem('role') === 'SLR') {
             this.authService.fetchStore(localStorage.getItem('email')!).subscribe((data: Store) => {
               localStorage.setItem('store', data.id.toString());
+              this.reset = false;
               this.router.navigate(['/seller/home']);
             });   
           }
           else if (localStorage.getItem('role') === 'BYR') {
+            this.reset = false;
             this.router.navigate(['/buyer/home']);
           }
         });

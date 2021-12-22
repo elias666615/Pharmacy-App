@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="navbar">
+  <div #navbar class="navbar">
     <a (click)="switchRoute('home')" routerLink="home" routerLinkActive="active">
       <div [@selectUnselect]="urlPath === 'home'? 'selected' : 'unselected'" class="nav-button"><span>Home</span></div>
     </a>
@@ -9,6 +9,9 @@
     <a (click)="switchRoute('sales')" routerLink="sales" routerLinkActive="active">
       <div [@selectUnselect]="urlPath === 'sales'? 'selected' : 'unselected'" class="nav-button"><span>Orders</span></div>
     </a>
+    <a (click)="logout()" routerLinkActive="active">
+      <div [@selectUnselect]="urlPath === 'sales'? 'selected' : 'unselected'" class="nav-button"><span>Logout</span></div>
+    </a>
 </div>
-  <div class="content"><router-outlet></router-outlet></div>
+  <div class="content" [ngStyle]="contentHeight"><router-outlet></router-outlet></div>
 </div>

@@ -1,0 +1,67 @@
+<div *ngIf="!loading1 && !loading2" class="container">
+    <div class="content-container">
+      <h1 class="sub-title">Account information</h1>
+      <div class="divider"></div>
+      <div class="inner-content">
+        <p class="field-title">Email</p>
+        <p class="information">{{ user.email }}</p>
+        <p class="field-title">Password</p>
+        <p class="information">
+          *************</p>
+          <p class="field-title">First name</p>
+        <p class="information">
+          {{ user.first_name }} </p>
+          <p class="field-title">Last name</p>
+        <p class="information">
+          {{ user.last_name }} </p>
+      </div>
+    </div>
+    <div class="content-container">
+      <h1 class="sub-title">Location</h1>
+      <div class="divider"></div>
+      <div class="inner-content">
+        <p class="field-title">City</p>
+        <p class="information store_name">
+          {{ user.city
+          }}
+        </p>
+        <p class="field-title">Street</p>
+        <p class="information">
+          {{ user.street
+          }}
+        </p>
+        <p class="field-title">Location details</p>
+        <p class="information">
+          {{ user.location
+          }}
+        </p>
+      </div>
+    </div>
+    <div class="content-container">
+      <h1 class="sub-title">Banking information</h1>
+      <div class="divider"></div>
+      <p class="field-title" *ngIf="cardInfo == null">Not availble</p>
+      <div *ngIf="cardInfo != null">
+        <p class="field-title">Card Number</p>
+        <p class="information">
+          *************{{ cardNumber
+          }}
+        </p>
+        <p class="field-title">Name on card</p>
+        <p class="information">
+          {{ cardInfo.name_on_card
+          }}
+        </p>
+        <p class="field-title">Expiry Date</p>
+        <p class="information">
+          {{ cardInfo.expiry_pate
+          }}
+        </p>
+        <p class="field-title">CVV</p>
+        <p class="information">
+          ***
+        </p>
+      </div>
+    </div>
+</div>
+

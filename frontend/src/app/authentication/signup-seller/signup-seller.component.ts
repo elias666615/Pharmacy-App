@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -18,6 +19,9 @@ export class SignupSellerComponent implements OnInit {
     city: ['', [Validators.required]],
     street: ['', [Validators.required]],
     location: ['', [Validators.required]],
+    account_holder_name: ['', [Validators.required]],
+    account_number: ['', [Validators.required]],
+    name_of_bank: ['', [Validators.required]],
   });
 
   signupDisabled: boolean = true;
@@ -32,7 +36,8 @@ export class SignupSellerComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.setCookie('access', 'eliasbouslewan', 10);
@@ -97,10 +102,16 @@ export class SignupSellerComponent implements OnInit {
       data.append('password', this.signupForm.controls['password'].value);
       data.append('location', this.signupForm.controls['location'].value);
       data.append('phone_number', this.signupForm.controls['phone'].value);
+      data.append('city', this.signupForm.controls['city'].value);
+      data.append('street', this.signupForm.controls['street'].value);
+      data.append('location', this.signupForm.controls['location'].value);
+      data.append('account_number', this.signupForm.controls['account_number'].value);
+      data.append('account_holder_name', this.signupForm.controls['account_holder_name'].value);
+      data.append('name_of_bank', this.signupForm.controls['name_of_bank'].value);
       data.append('role', 'SLR');
       console.log(data);
 
-      this.authService.signup(data).subscribe(data => console.log(data));
+      this.authService.signup(data).subscribe(data => this.router.navigate(['/login']));
     }
   }
 }
