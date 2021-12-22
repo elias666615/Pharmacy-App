@@ -12,6 +12,21 @@
     font-size: 40px;
 }
 
+mat-select {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+mat-option {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.formField{
+    width:100%;
+    margin-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    /* margin-top: 12px; */
+}
+
 .header span {
     font-size: 36px;
     margin-left: 50px;
@@ -35,59 +50,12 @@
 }
 
 .add-button{
-    background-color: #ffaa18;
+    background-color: #5CDB95;
     font-size: 25px;
     color: white;
     width: 100%;
     padding: 10px 0 10px 0;
-}
-
-/* mat-icon-stepper selected color change  */
-::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    background-color: red!important;
-}
-
-/* input outline color */
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: grey!important;
-    /* opacity: 1!important; */
-}
-
-/* mat-input focused color */
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-    color: #1B9CE5!important;
-}
-
-/* mat-input error outline color */
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
-    color: rgb(255, 50, 50)!important;
-    opacity: 0.8!important;
-}
-
-/* mat-input caret color */
-::ng-deep .mat-input-element {
-    caret-color: #1B9CE5!important;
-}
-
-/* mat-input error caret color */
-::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
-    caret-color: rgb(255, 50, 50)!important;
-}
-
-/* mat-label normal state style */
-::ng-deep .mat-form-field-label {
-    color: rgba(0,0,0,.6)!important;
-    /* color: $mainColor!important; */
-}
-
-/* mat-label focused style */
-::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-    color: #1B9CE5!important;
-}
-
-/* mat-label error style */
-::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-    color: rgb(255, 50, 50)!important;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
 }
 
 .file_input {
@@ -97,11 +65,17 @@
     left: -1000px;
 }
 
+.drawer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+} 
+
 .browse-button {
     font-size: 18px;
-    background-color: #ffaa18;
+    background-color: #5CDB95;
     color: white;
     margin-right: 10px;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
 }
 
 .divider {
@@ -114,24 +88,3 @@
     box-shadow: 0 -2px 2px rgba(197, 197, 197, 0.6);
     padding: 20px 50px 20px 50px;
 }
-
-/* width */
-::-webkit-scrollbar {
-    width: 12px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }

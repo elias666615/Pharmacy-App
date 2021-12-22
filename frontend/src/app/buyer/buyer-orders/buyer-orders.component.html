@@ -1,9 +1,13 @@
 <div class="container">
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="New">
-          <div class="new-container">
-            <div class="orders-new-container">
-              <app-order-item [new]="true" *ngFor="let order of newOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
+          <div *ngIf="newOrders.length === 0" class="no-orders-container">
+            <img src="../../../assets/notfound.png" alt="">
+            <h1>No Orders</h1>
+          </div>
+          <div class="new-container" *ngIf="newOrders.length != 0">
+            <div class="orders-new-container" *ngIf="newOrders.length != 0">
+              <app-order-item (click)="onOrderClick(order)" [new]="true" *ngFor="let order of newOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
            </div>
             <div class="checkout-container">
               <p class="checkout-info">You have {{ numberOfNewOrders }} orders</p>
@@ -20,25 +24,41 @@
           </div>
         </mat-tab>
         <mat-tab label="Waiting for accept">
-          <div class="tab-container">
-            <app-order-item *ngFor="let order of waitAOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
+          <div *ngIf="waitAOrders.length == 0" class="no-orders-container">
+            <img src="../../../assets/notfound.png" alt="">
+            <h1>No Orders</h1>
+          </div>
+          <div *ngIf="waitAOrders.length != 0" class="tab-container">
+            <app-order-item (click)="onOrderClick(order)" *ngFor="let order of waitAOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Waiting to be delivered">
-          <div class="tab-container">
-            <app-order-item *ngFor="let order of waitDOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
+          <div *ngIf="waitDOrders.length == 0" class="no-orders-container">
+            <img src="../../../assets/notfound.png" alt="">
+            <h1>No Orders</h1>
+          </div>
+          <div *ngIf="waitDOrders.length != 0" class="tab-container">
+            <app-order-item (click)="onOrderClick(order)" *ngFor="let order of waitDOrders" [order]="order" (canceled)="deleteOrder($event)"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Delivered">
-          <div class="tab-container">
-            <app-order-item *ngFor="let order of deliveredOrders" [order]="order"></app-order-item>
+          <div *ngIf="deliveredOrders.length == 0" class="no-orders-container">
+            <img src="../../../assets/notfound.png" alt="">
+            <h1>No Orders</h1>
+          </div>
+          <div *ngIf="deliveredOrders.length != 0" class="tab-container">
+            <app-order-item (click)="onOrderClick(order)" *ngFor="let order of deliveredOrders" [order]="order"></app-order-item>
          </div>
         </mat-tab>
         <mat-tab label="Rejected">
-          <div class="tab-container">
-            <app-order-item *ngFor="let order of rejectedOrders" [order]="order"></app-order-item>
+          <div *ngIf="rejectedOrders.length == 0" class="no-orders-container">
+            <img src="../../../assets/notfound.png" alt="">
+            <h1>No Orders</h1>
+          </div>
+          <div *ngIf="rejectedOrders.length != 0" class="tab-container">
+            <app-order-item (click)="onOrderClick(order)" *ngFor="let order of rejectedOrders" [order]="order"></app-order-item>
          </div>
         </mat-tab>
       </mat-tab-group>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

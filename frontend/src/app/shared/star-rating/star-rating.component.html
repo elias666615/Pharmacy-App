@@ -1,6 +1,6 @@
-<div class="container">
-    <div *ngFor="let star of stars; index as i" (mouseover)="onHover(i)" (mouseleave)="onMouseLeave()" (click)="onClick(i)">
-        <img *ngIf="star" class="image" src="../../../assets/star-filled.png" alt="filled_star">
-        <img *ngIf="!star" class="image" src="../../../assets/star-empty.png" alt="filled_star">
+<div [ngClass]="{'container-enabled': enabled, 'container-disabled': !enabled}">
+    <div *ngFor="let star of stars; index as i" (click)="onClick(i)">
+        <img [ngClass]="{'image-enabled': enabled, 'image-disabled': !enabled}" src="{{star}}" alt="filled_star">
+        <!-- <img *ngIf="!star" [ngClass]="{'image-enabled': enabled, 'image-disabled': !enabled}" src="../../../assets/star-empty.png" alt="filled_star"> -->
     </div>
 </div>

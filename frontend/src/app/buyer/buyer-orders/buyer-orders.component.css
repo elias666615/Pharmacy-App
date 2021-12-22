@@ -30,6 +30,21 @@
     padding: 20px 15% 20px 15%;
 }
 
+.no-orders-container {
+    padding: 5% 5% 0 5%;
+    text-align: center;
+}
+
+.no-orders-container img {
+    width: 15%;
+}
+
+.no-orders-container h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+}
+
 .orders-new-container {
     padding: 0 5% 0 5%;
 }
@@ -82,5 +97,81 @@ button {
     background-color: #5CDB95;
     color: white;
     margin-top: 5%;
+}
+
+@media only screen and (min-width: 900px) {
+    .tab-container {
+        padding: 20px 7% 20px 7%;
+    }
+
+    .no-orders-container img {
+        width: 20%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .tab-container {
+        padding: 20px 9% 20px 9%;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .tab-container {
+        padding: 20px 11% 20px 11%;
+    }
+
+    .no-orders-container img {
+        width: 18%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .tab-container {
+        padding: 20px 13% 20px 13%;
+    }
+
+    .no-orders-container img {
+        width: 18%;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .tab-container {
+        padding: 20px 15% 20px 15%;
+    }
+
+    .no-orders-container img {
+        width: 15%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .tab-container {
+        padding: 20px 17% 20px 17%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .tab-container {
+        padding: 20px 19% 20px 19%;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .tab-container {
+        padding: 20px 21% 20px 21%;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    .tab-container {
+        padding: 20px 23% 20px 23%;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .tab-container {
+        padding: 20px 25% 20px 25%;
+    }
 }
 

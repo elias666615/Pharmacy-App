@@ -11,10 +11,12 @@ export class SignupSellerComponent implements OnInit {
 
   signupForm = this.fb.group({
     pharmacyname: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
-    email: ['', [Validators.required]],
+    phone: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
     confirmpassword: ['', [Validators.required]],
+    city: ['', [Validators.required]],
+    street: ['', [Validators.required]],
     location: ['', [Validators.required]],
   });
 
@@ -41,6 +43,10 @@ export class SignupSellerComponent implements OnInit {
     this.signupDisabled = !this.signupForm.valid || !this.termsChecked;
     console.log("form valid: ", this.signupForm.valid);
     console.log('checked: ', this.termsChecked);
+  }
+
+  get passwordsMatch() {
+    return this.signupForm.controls['password'].value === this.signupForm.controls['confirmpassword'].value;
   }
 
   fileBrowserHandler(event: any) {

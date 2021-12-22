@@ -1,0 +1,102 @@
+.container {
+    padding: 40px 25% 40px 25%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-top: 3%;
+}
+
+.container h1 {
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.products-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.product-card {
+    margin: 10% 0 10% 0;
+}
+
+.no-products-container {
+    text-align: center;
+    padding-top: 10%;
+}
+
+.no-products-container img {
+    width: 25%;
+    padding-bottom: 3%;
+}
+
+.no-products-container h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+@media only screen and (min-width: 900px) {
+    .container {
+        padding: 40px 7% 40px 7%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .container {
+        padding: 40px 9% 40px 9%;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .container {
+        padding: 40px 11% 40px 11%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        padding: 40px 13% 40px 13%;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .container {
+        padding: 40px 15% 40px 15%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .container {
+        padding: 40px 17% 40px 17%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .container {
+        padding: 40px 19% 40px 19%;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .container {
+        padding: 40px 21% 40px 21%;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    .container {
+        padding: 40px 23% 40px 23%;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .container {
+        padding: 40px 25% 40px 25%;
+    }
+}

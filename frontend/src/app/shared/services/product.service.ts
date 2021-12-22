@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { AddProduct, CreateOrder, Order, Product } from '../models/productmodels';
+import { AddProduct, CreateOrder, Order, Product, Rating } from '../models/productmodels';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,10 @@ export class ProductService {
     return this.http.get<Order[]>('http://127.0.0.1:8000/store/orders/?store=' + store_id.toString());
   }
 
+  fetchOrderByUserAndProduct(user: string, product: number) {
+    return this.http.get<Order[]>(`http://127.0.0.1:8000/store/orders/?user=${user}&product=${product}`)
+  }
+
   createOrder(order: CreateOrder) {
     return this.http.post('http://127.0.0.1:8000/store/orders/', order);
   }
@@ -60,5 +64,21 @@ export class ProductService {
   
   getCommercialProducts(type: string, category: number) {
     return this.http.get<Product[]>('http://127.0.0.1:8000/store/commercial_products/?type=' + type + '&category=' + category);
+  }
+
+  searchCommercialProducts(type: string, search: string) {
+    return this.http.get<Product[]>('http://127.0.0.1:8000/store/commercial_products/?type=' + type + '&search=' + search);
+  }
+
+  fetchRatingsByProduct(product: number) {
+    return this.http.get<Rating[]>(`http://127.0.0.1:8000/store/rating/?product=${product}`);
+  }
+
+  fetchRatingByUserAndProduct(product: number, user: string) {
+    return this.http.get<Rating[]>(`http://127.0.0.1:8000/store/rating/?product=${product}&user=${user}`);
+  }
+
+  addRating(data: object) {
+    return this.http.post<Rating>('http://127.0.0.1:8000/store/rating/', data);
   }
 }

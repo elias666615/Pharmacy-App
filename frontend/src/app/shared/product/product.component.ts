@@ -22,4 +22,8 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  get showToolTip() {
+    return this.product.name.length <= 12;
+  }
+
 }

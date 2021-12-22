@@ -1,9 +1,10 @@
 import { COMMA, ENTER, L } from '@angular/cdk/keycodes';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Product, SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
+import { Category, Product, SubCategory, Tag, Type } from 'src/app/shared/models/productmodels';
 import { LookupsService } from 'src/app/shared/services/lookups.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -16,7 +17,7 @@ export class UpdateProductComponent implements OnInit {
 
   @Input() product!: Product;
   @Input() types!: Type[];
-  @Input() allCategories!: SubCategory[];
+  @Input() allCategories!: Category[];
   allTags: Tag[] = [];
 
   @Output() productUpdated = new EventEmitter<Product>();
@@ -29,19 +30,13 @@ export class UpdateProductComponent implements OnInit {
     discount: ['0', [Validators.required, Validators.min(0), Validators.max(100)]],
     quantity: ['', [Validators.required, Validators.min(0), Validators.max(1000000000)]],
     categories: ['', Validators.required],
+    tags: ['', Validators.required],
     type: ['', Validators.required],
+    new_tag: [''],
   });
 
   imageUrl!: any;
-
-  selectable = true;
-  removable = true;
-
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  tagCtrl = new FormControl();
-  tags: Tag[] = [];
-  filteredTags: Tag[] = this.allTags;
-  @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
+  imageChanged: number = 0;
 
   @ViewChild('fileBrowseRef') fileBrowseRef: any;
   imageFileName: string = '';
@@ -57,108 +52,44 @@ export class UpdateProductComponent implements OnInit {
   }
 
   initializeForm() {
-    console.log(this.product.type);
+    const cats: number[] = [];
+    this.product.categories.forEach(c => cats.push(c.id));
+    const tags: number[] = [];
+    this.product.tags.forEach(t => tags.push(t.id))
 
     this.productForm.controls['name'].setValue(this.product.name);
     this.productForm.controls['description'].setValue(this.product.description);
-    this.productForm.controls['categories'].setValue(this.product.categories);
+    this.productForm.controls['categories'].setValue(cats);
+    this.productForm.controls['tags'].setValue(tags);
     this.productForm.controls['discount'].setValue(this.product.discount);
     this.productForm.controls['price'].setValue(this.product.price_per_unit);
     this.productForm.controls['quantity'].setValue(this.product.initial_quantity);
-    this.productForm.controls['type'].setValue(this.product.type);
+    this.productForm.controls['type'].setValue(this.product.type.id);
 
-    for(let i = 0; i < this.product.tags.length; i++) {
-      let tag = this.allTags.find(tag => tag.id === this.product.tags[i]);
-      let idx = undefined;
-      if(tag != undefined) {
-        idx = this.allTags.indexOf(tag);
-        if(idx > -1) {
-          this.tags.push(tag);
-          this.allTags.splice(idx, 1);
-        }
-      }
-    }
-  }
-
-  addCategory(event: MatChipInputEvent): void {
-    // const value = (event.value || '').trim();
-
-    // // Add our fruit
-    // if (value) {
-    //   this.categories.push(value);
-    // }
-
-    // // Clear the input value
-    // event.chipInput!.clear();
-
-    // this.categoryCtrl.setValue(null);
-  }
-
-  addTag(event: MatChipInputEvent): void {
-
-  }
-
-  removeTag(tag: Tag) {
-    const index = this.tags.indexOf(tag);
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-    this.allTags.push(tag);
-  }
-
-  selectedTag(event: MatAutocompleteSelectedEvent) {
-    const tag = this.allTags.find(tag => tag.description == event.option.viewValue);
-    if (tag != undefined) {
-      this.tags.push(tag);
-      this.tagInput.nativeElement.value = '';
-      this.tagCtrl.setValue(null);
-      const idx = this.allTags.indexOf(tag);
-      if (idx > -1) this.allTags.splice(idx, 1);
-    }
-  }
-
-  _filterTag(value: string) {
-    console.log(this.filteredTags);
-    const  filterValue = value.toLowerCase().trim();
-    if(filterValue === "" || filterValue === null) this.filteredTags = this.allTags;
-    else this.filteredTags = this.filteredTags.filter(tag => tag.description.toLowerCase().includes(filterValue));
+    console.log(this.productForm.controls['tags'].value);
   }
 
   fetchTags() {
-    this.lookupsService.fetchTags().subscribe((data: Tag[]) => {this.allTags = data, this.initializeForm();});
+    this.lookupsService.fetchTags().subscribe((data: Tag[]) => {this.allTags = data; this.initializeForm();});
   }
 
   updateProduct() {
     if (this.productForm.valid) {
-      let _tags: number[] = [];
-      this.tags.forEach(tag => _tags.push(tag.id as number));
-      console.log(_tags);
-      console.log(this.imageUrl);
-      // const creationParameters: AddProduct = {
-      //   name: this.productForm.controls['name'].value,
-      //   description: this.productForm.controls['description'].value,
-      //   price_per_unit: this.productForm.controls['price'].value,
-      //   discount: this.productForm.controls['discount'].value,
-      //   initial_quantity: this.productForm.controls['quantity'].value,
-      //   image: this.imageUrl,
-      //   categories: this.productForm.controls['categories'].value,
-      //   tags: _tags,
-      //   type: this.productForm.controls['type'].value,
-      //   store: 2,
-      // }
 
       const creationForm = new FormData();
+      creationForm.append('update_type', 'all');
       creationForm.append('id', JSON.stringify(this.product.id));
       creationForm.append('name', this.productForm.controls['name'].value);
       creationForm.append('description', this.productForm.controls['description'].value);
       creationForm.append('price_per_unit', this.productForm.controls['price'].value);
       creationForm.append('discount', this.productForm.controls['discount'].value);
       creationForm.append('initial_quantity', this.productForm.controls['quantity'].value);
-      // creationForm.append('image', this.imageUrl);
+      creationForm.append('image', this.imageUrl);
       creationForm.append('categories', this.productForm.controls['categories'].value);
-      creationForm.append('tags', _tags.join(','));
+      creationForm.append('tags', this.productForm.controls['tags'].value);
       creationForm.append('type', this.productForm.controls['type'].value);
-      creationForm.append('store', JSON.stringify(2));
+      creationForm.append('store', localStorage.getItem('store')!);
+      creationForm.append('picture_changed', JSON.stringify(this.imageChanged));
 
 
       this.productService.updateProduct(creationForm).subscribe((data: Product) => this.productUpdated.emit(data));
@@ -177,7 +108,7 @@ export class UpdateProductComponent implements OnInit {
     }
 
     this.imageUrl = event.target.files[0];
-    console.log(event.target.files[0])
+    this.imageChanged = 1;
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
 
@@ -188,6 +119,16 @@ export class UpdateProductComponent implements OnInit {
 
   browseImage() {
     this.fileBrowseRef.nativeElement.click();
+  }
+
+  addTag() {
+    if(this.productForm.controls['new_tag'].value != null && this.productForm.controls['new_tag'].value != '') {
+      const data: object = {description: this.productForm.controls['new_tag'].value}
+      this.lookupsService.addTag(data).subscribe(data => {
+        this.allTags.push(data);
+        this.productForm.controls['new_tag'].setValue('');
+      });
+    }
   }
 
 }

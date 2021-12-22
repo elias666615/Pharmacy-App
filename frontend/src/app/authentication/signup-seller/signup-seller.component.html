@@ -6,7 +6,9 @@
           (ngModelChange)="checkIfDisabled()"
           matInput
           formControlName="pharmacyname"
+          autocomplete="false"
         />
+        <mat-error *ngIf="signupForm.controls['pharmacyname'].hasError('required')">Name is required</mat-error>
       </mat-form-field>
       <mat-form-field class="formField" appearance="standard">
         <mat-label>Phone</mat-label>
@@ -15,9 +17,12 @@
           matInput
           formControlName="phone"
           type="phone"
+          autocomplete="false"
         />
+        <mat-error *ngIf="signupForm.controls['phone'].hasError('required')">Phone number is required</mat-error>
+        <mat-error *ngIf="signupForm.controls['phone'].hasError('pattern')">Phone number must only contain numbers</mat-error>
       </mat-form-field>
-      <mat-form-field class="formField" appearance="standard">
+      <mat-form-field class="formField" appearance="standard" autocomplete="false">
         <mat-label>Email</mat-label>
         <input
           (ngModelChange)="checkIfDisabled()"
@@ -25,6 +30,8 @@
           placeholder="email@example.com"
           formControlName="email"
         />
+        <mat-error *ngIf="signupForm.controls['email'].hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="signupForm.controls['email'].hasError('email')">Wrong email format</mat-error>
       </mat-form-field>
       <mat-form-field class="formField" appearance="standard">
         <mat-label>Password</mat-label>
@@ -33,7 +40,9 @@
           matInput
           formControlName="password"
           type="password"
+          autocomplete="false"
         />
+        <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
       </mat-form-field>
       <mat-form-field class="formField" appearance="standard">
         <mat-label>Confirm Password</mat-label>
@@ -42,33 +51,44 @@
           matInput
           formControlName="confirmpassword"
           type="password"
+          autocomplete="false"
         />
       </mat-form-field>
+      <mat-error *ngIf="!passwordsMatch">Passwords do not match</mat-error>
       <mat-form-field class="formField" appearance="standard">
-        <mat-label>Location</mat-label>
-        <textarea
+        <mat-label>City</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="city"
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['city'].hasError('required')">City is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Street</mat-label>
+        <input
+          (ngModelChange)="checkIfDisabled()"
+          matInput
+          formControlName="street"
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['street'].hasError('required')">Street is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="standard">
+        <mat-label>Location details</mat-label>
+        <input
           (ngModelChange)="checkIfDisabled()"
           matInput
           formControlName="location"
-        ></textarea>
+          type="text"
+          autocomplete="false"
+        />
+        <mat-error *ngIf="signupForm.controls['location'].hasError('required')">Location is required</mat-error>
       </mat-form-field>
-      <!-- <div>
-          <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
-            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-          </agm-map>
-      </div> -->
-      <div class="sub-container">
-        <button
-          class="browse-button"
-          mat-raised-button
-          (click)="browseImage()"
-        >
-          Upload License
-        </button>
-        <span>{{ imageFileName }}</span>
-      </div>
     </form>
-    <input class="file_input" type="file" (change)="fileBrowserHandler($event)" #fileBrowseRef accept="file/*" />
     <div>
         <mat-checkbox class="terms-conditions" (change)="checkIfDisabled()" [(ngModel)]="termsChecked">I agree to the terms & conditions</mat-checkbox>
       </div>

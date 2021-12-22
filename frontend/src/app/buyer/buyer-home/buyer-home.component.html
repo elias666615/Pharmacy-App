@@ -7,7 +7,7 @@
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
-        <button mat-flat-button color="primary" class="search_button">Search</button>
+        <button mat-flat-button color="primary" class="search_button" (click)="onSearchClick()">Search</button>
         <button mat-button [matMenuTriggerFor]="menu" class="categories_button">Categories</button>
             <mat-menu #menu="matMenu">
                 <a class="category-menu-item" *ngFor="let category of categories" mat-menu-item>{{ category.description }}</a>
@@ -17,13 +17,13 @@
         <p>Best Sellers</p>
     </div>
     <div class="products-container">
-        <div class="arrow">
+        <div class="arrow" (click)="rotateProducts()">
             <img src="assets/arrow-left-96.png" alt="">
         </div>
         <div class="products">
-            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of products"><product [product]=product></product></a>
+            <a [routerLink]="['/buyer/product', product.id]" *ngFor="let product of BestSellerDisplayed"><product class="product" [product]=product></product></a>
         </div>
-        <div class="arrow">
+        <div class="arrow" (click)="rotateProducts()">
             <img src="assets/arrow-right-96.png" alt="">
         </div>
     </div>

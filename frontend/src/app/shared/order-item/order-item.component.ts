@@ -36,10 +36,30 @@ export class OrderItemComponent implements OnInit {
   order_time: string = '';
   constructor() { }
 
-  ngOnInit(): void {
-    let date_time = this.order.order_date.split('T');
-    this.order_date = date_time[0];
-    this.order_time = date_time[1].substring(0, 5);
+  ngOnInit(): void {}
+
+  get datetime(): string {
+    if(this.order.state == 'new') {
+      let datetime = this.order.place_at.split('T');
+      return `order placed on ${datetime[0]} at ${datetime[1].substring(0, 5)}`;
+    }
+    else if (this.order.state == 'wait_a') {
+      let datetime = this.order.checked_out_at.split('T');
+      return `order checked out on ${datetime[0]} at ${datetime[1].substring(0, 5)}`;
+    }
+    else if (this.order.state == 'wait_d') {
+      let datetime = this.order.accep_reject_at.split('T');
+      return `order accepted on ${datetime[0]} at ${datetime[1].substring(0, 5)}`;
+    }
+    else if (this.order.state == 'reject') {
+      let datetime = this.order.accep_reject_at.split('T');
+      return `order rejected on ${datetime[0]} at ${datetime[1].substring(0, 5)}`;
+    }
+    else if (this.order.state == 'del') {
+      let datetime = this.order.delivered_at.split('T');
+      return `order delivered on ${datetime[0]} at ${datetime[1].substring(0, 5)}`;
+    }
+    return '';
   }
 
   delay(ms: number) {
@@ -62,15 +82,10 @@ export class OrderItemComponent implements OnInit {
     this.alive = false;
     await this.delay(100);
     this.delivered.emit(this.order.id);
+
   }
 
   async cancel() {
     this.canceled.emit(this.order.id);
-  }
-
-
-  ngOnDestroy() {
-    this.alive = false;
-    console.log('testing the destroy');
   }
 }

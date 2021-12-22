@@ -1,5 +1,7 @@
 .container {
     padding: 5% 25% 5% 25%;
+    height: calc(100vh - 39px);
+    overflow-y: scroll;
 }
 
 .product-display-container {
@@ -8,9 +10,12 @@
 }
 
 .image-container {
-    background-color: rgba(128, 128, 128, 0.466);
-    text-align: center;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.2);
     border: solid 2px #05386B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-image {
@@ -89,3 +94,332 @@ mat-form-field {
     font-size: 30px;
 } 
 
+.add-rating-container {
+    margin: 10% 0 10% 0;
+}
+
+.add-rating-container p {
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.add-rating-container mat-form-field {
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+}
+
+.add-rating-container button {
+    float: right;
+    font-size:  20px;
+    background-color: #5CDB95;
+    color: white;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    padding: 0.6% 3% 0.6% 3%;
+    margin-left: 2%;
+}
+
+.add-rating-container button:disabled {
+    background-color: rgb(224, 224, 224);
+    color: rgb(161, 161, 161);
+}
+
+.ratings-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.overall-rating-container {
+    background-color: rgba(128, 128, 128, 0.2);
+    width: 90%;
+    border-radius: 10px;
+    margin: 0 5% 0 5%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    font-size: 30px;
+    padding: 20% 0 20% 0;
+    height: fit-content;
+}
+
+.overall-rating {
+    font-size: 80px;
+}
+
+.overall-rating-container h1 {
+    font-size: 30px;
+    margin-top: 10%;
+}
+
+.name-rating-container span {
+    display: inline-block;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.reviews-container {
+    padding: 2% 5% 2% 5%;
+}
+
+.name-rating-container app-star-rating {
+    width: 26%;
+    display: inline-block;
+}
+
+.review-container {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.divider {
+    width: 100%;
+    height: 1.5px;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 20px 0 20px 0;
+}
+
+@media only screen and (min-width: 900px) {
+    .container {
+        padding: 5% 9% 5% 9%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 35px;
+    }
+    
+    .product-description {
+        font-size: 22px;
+    }
+
+    .discounted_price {
+        font-size: 27px;
+    }
+    
+    .price {
+        font-size: 27px;
+    }
+    
+    mat-form-field {
+        font-size: 20px;
+    }
+    
+    .add-order-btn {
+        font-size:  20px;
+    }
+    
+    .total {
+        font-size: 27px;
+    } 
+
+    .overall-rating {
+        font-size: 65px;
+    }
+    
+    .overall-rating-container h1 {
+        font-size: 27px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .container {
+        padding: 5% 11% 5% 11%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 35px;
+    }
+    
+    .product-description {
+        font-size: 22px;
+    }
+
+    .discounted_price {
+        font-size: 27px;
+    }
+    
+    .price {
+        font-size: 27px;
+    }
+    
+    mat-form-field {
+        font-size: 20px;
+    }
+    
+    .add-order-btn {
+        font-size:  20px;
+    }
+    
+    .total {
+        font-size: 27px;
+    } 
+}
+
+@media only screen and (min-width: 1100px) {
+    .container {
+        padding: 5% 13% 5% 13%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 35px;
+    }
+    
+    .product-description {
+        font-size: 22px;
+    }
+    
+    .discounted_price {
+        font-size: 27px;
+    }
+    
+    .price {
+        font-size: 27px;
+    }
+    
+    mat-form-field {
+        font-size: 20px;
+    }
+    
+    .add-order-btn {
+        font-size:  20px;
+    }
+    
+    .total {
+        font-size: 27px;
+    } 
+}
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        padding: 5% 15% 5% 15%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+    
+    .discounted_price {
+        font-size: 30px;
+    }
+    
+    .crossed {
+        font-size: 30px;
+    }
+    
+    .price {
+        font-size: 30px;
+    }
+    
+    .discount {
+        font-size: 30px;
+    }
+    
+    mat-form-field {
+        font-size: 20px;
+    }
+    
+    .add-order-btn {
+        font-size:  22px;
+    }
+    
+    .total {
+        font-size: 30px;
+    } 
+
+    .overall-rating {
+        font-size: 80px;
+    }
+    
+    .overall-rating-container h1 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .container {
+        padding: 5% 17% 5% 17%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .container {
+        padding: 5% 19% 5% 19%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .container {
+        padding: 5% 21% 5% 21%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .container {
+        padding: 5% 23% 5% 23%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .container {
+        padding: 5% 25% 5% 25%;
+        height: calc(100vh - 39px);
+    }
+
+    .product-name {
+        font-size: 40px;
+    }
+    
+    .product-description {
+        font-size: 25px;
+    }
+    
+}

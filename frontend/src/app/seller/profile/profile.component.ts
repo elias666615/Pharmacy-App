@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Store, UserInfo } from 'src/app/authentication/models/userModels';
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,53 +10,32 @@ import { FormControl } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-  store_name: string = 'pharmacia';
-  store_location: string = 'lebanon, beirut, furn el cheback, maounet street, next to church';
-  email: string = 'eliasbbb46@gmail.com';
-  password: string = '***************';
-  phone_number: string ='71038349';
-  rating: number = 2.2;
-  itemsSold: number = 1022;
-  totalRevenue: number = 4509322000;
-
-  storeNameCtrl: FormControl = new FormControl(this.store_name);
-  storeLocationCtrl: FormControl = new FormControl(this.store_location);
-  editing: string = '';
-
+  store!: Store;
+  user!: UserInfo;
+  loading1: boolean = true;
+  loading2: boolean = true;
   @ViewChild('storeName') storeNameInput!: ElementRef<HTMLInputElement>;
   @ViewChild('storeLocation') storeLocationInput!: ElementRef<HTMLInputElement>;
 
   saveStoreInfoDisabled: boolean = true;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.fetchStore();
+    this.fetchUser();
   }
 
-  editField(field: string) {
-    this.editing = field;
-    if(field === 'store_name') {
-      setTimeout(()=>{
-        this.storeNameInput.nativeElement.focus();
-      }, 0);
-    }
-    else if (field === 'store_location') {
-      setTimeout(() => {
-        this.storeLocationInput.nativeElement.focus();
-      }, 0)
-    }
-    
+  fetchStore() {
+    this.authService.fetchStore(localStorage.getItem('email')!).subscribe((data: Store) => {this.store = data; this.loading1 = false;});
   }
 
-  stopEditing(field: string) {
-    this.editing = '';
-    if(field === 'store_name') {
-      this.store_name = this.storeNameCtrl.value;
-    }
-    else if (field === 'store_location') {
-      this.store_location = this.storeLocationCtrl.value;
-    }
+  fetchUser() {
+    this.authService.fetchUser(localStorage.getItem('email')!).subscribe((data: UserInfo) => {this.user = data; this.loading2 = false;});
   }
 
+  get cardNumber() {
+    return this.store.account_number.slice(-4);
+  }
 
 }

@@ -47,6 +47,9 @@ import { OrderItemComponent } from './shared/order-item/order-item.component';
 import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 import { CardInformationComponent } from './authentication/card-information/card-information.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { OrderDetailsComponent } from './shared/order-details/order-details.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProductSearchComponent } from './buyer/product-search/product-search.component';
 
 
 @NgModule({
@@ -74,6 +77,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     ProductDetailsComponent,
     CardInformationComponent,
     FooterComponent,
+    OrderDetailsComponent,
+    ProductSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +106,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     MatRippleModule,
     MatCheckboxModule,
     MatTabsModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

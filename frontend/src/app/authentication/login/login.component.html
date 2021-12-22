@@ -2,20 +2,23 @@
 
 
     <div class="tilte-container">
-        <h1 class="login-title">Login</h1>
     </div>
-
-
+    <div>
+    <h1 class="login-title">Login</h1>
     <div class="formContainer">
         <form [formGroup]="loginForm" >
+            <span class="error" *ngIf="loginFailed">Invalid credentials, try again.</span>
             <mat-form-field class="formField" appearance="standard">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="email@example.com" formControlName="email" >
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('email')">Wrong email format</mat-error>
             </mat-form-field>
             <br />
             <mat-form-field class="formField" appearance="standard">
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
             </mat-form-field>
         </form>
 
@@ -29,6 +32,8 @@
              <p>New to Pharmacia? <a routerLink="/signup">Signup</a> </p>
         </div>
     </div>
+    </div>
+
 
 
 </div>

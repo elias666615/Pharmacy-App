@@ -1,9 +1,19 @@
-.container {
-    width: 140px;
+.container-disabled {
+    width: 90%;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
 }
 
-.image {
-    width: 20px;
+.container-enabled {
+    width: 250px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.image-enabled {
+    width: 40px;
+}
+
+.image-disabled {
+    max-width: 80%;
 }

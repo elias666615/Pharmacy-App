@@ -23,27 +23,49 @@ export class AuthenticationService {
     const  httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: 'Bearer ' + UserDataManager.getAccessToken()
+        Authorization: 'Bearer ' + localStorage.getItem('access')
       })
     };
-    return this.http.get<UserInfo>('http://127.0.0.1:8000/auth/user/?email=' + email);
+    return this.http.get<UserInfo>('http://127.0.0.1:8000/auth/user/?email=' + email, httpOptions);
   }
 
   fetchStore(email: string) {
     const  httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: 'Bearer ' + UserDataManager.getAccessToken()
+        Authorization: 'Bearer ' + localStorage.getItem("access")
       })
     };
-    return this.http.get<Store>('http://127.0.0.1:8000/auth/store/?user=' + email);
+    return this.http.get<Store>('http://127.0.0.1:8000/auth/store/?user=' + email, httpOptions);
+  }
+
+  updateStore(data: object) {
+    const  httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem("access")
+      })
+    };
+    return this.http.put('http://127.0.0.1:8000/auth/store/', data, httpOptions);
   }
 
   fetchCardInfo(email: string) {
-    return this.http.get<CardInfo>('http://127.0.0.1:8000/auth/transfer/?user=' + email)
+    const  httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem("access")
+      })
+    };
+    return this.http.get<CardInfo>('http://127.0.0.1:8000/auth/transfer/?user=' + email, httpOptions)
   }
 
   addCardInfo(data: CardInfo) {
-    return this.http.post('http://127.0.0.1:8000/auth/transfer/', data);
+    const  httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem("access")
+      })
+    };
+    return this.http.post('http://127.0.0.1:8000/auth/transfer/', data, httpOptions);
   }
 }

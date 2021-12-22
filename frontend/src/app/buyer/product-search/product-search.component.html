@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Results for "{{ search }}"</h1>
+    <div class="no-products-container" *ngIf="products.length === 0">
+        <img src="../../../assets/empty.png" alt="">
+        <h1>no products found</h1>
+    </div>
+    <div class="products-container" *ngIf="products.length != 0">
+        <div *ngFor="let product of products" class="product-card">
+            <a [routerLink]="['/buyer/product', product.id]"><product [product]=product></product></a>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 import { CardInformationComponent } from 'src/app/authentication/card-information/card-information.component';
+import { OrderDetailsComponent } from 'src/app/shared/order-details/order-details.component';
 
 @Component({
   selector: 'app-buyer-orders',
@@ -54,6 +55,11 @@ export class BuyerOrdersComponent implements OnInit {
   }
 
   categorizeOrders() {
+    this.waitAOrders = [];
+    this.waitDOrders = [];
+    this.newOrders = [];
+    this.rejectedOrders = [];
+    this.deliveredOrders= [];
     this.Allorders.forEach(order => {
       if(order.state === 'new') this.newOrders.push(order);
       else if (order.state === 'wait_a') this.waitAOrders.push(order);
@@ -85,11 +91,9 @@ export class BuyerOrdersComponent implements OnInit {
               this.newOrders.forEach(order => {
                 const data: object = {id: order.id, state: 'wait_a'};
                 this.productService.updateOrder(data).subscribe(data => {
-                  order.state = 'wait_a';
-                  this.waitAOrders.push(order);
+                  this.fetchOrders();
                 });
               });
-              this.newOrders = [];
             }
           });
         }
@@ -99,16 +103,22 @@ export class BuyerOrdersComponent implements OnInit {
       this.newOrders.forEach(order => {
         const data: object = {id: order.id, state: 'wait_a'};
         this.productService.updateOrder(data).subscribe(data => {
-          order.state = 'wait_a';
-          this.waitAOrders.push(order);
+          this.fetchOrders();
         });
       });
-      this.newOrders = [];
     }
   }
 
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  onOrderClick(order: Order) {
+    const dialogRef = this.dialog.open(OrderDetailsComponent, {
+      width: '550px',
+      height: '540px',
+      data: {order: order}
+    });
   }
 
   async deleteOrder(id: number) {
@@ -123,21 +133,17 @@ export class BuyerOrdersComponent implements OnInit {
         this.productService.deleteOrder(id).subscribe(() => {
           var order = this.newOrders.find(o => o.id = id);
           if(order != undefined) {
-            const idx = this.newOrders.indexOf(order);
-            this.newOrders.splice(idx, 1);
+            this.fetchOrders();
             return;
           }
           order = this.waitAOrders.find(o => o.id = id);
           if(order != undefined) {
-            console.log('found in wait A');
-            const idx = this.waitAOrders.indexOf(order);
-            this.waitAOrders.splice(idx, 1);
+            this.fetchOrders();
             return;
           }
           order = this.waitDOrders.find(o => o.id = id);
           if(order != undefined) {
-            const idx = this.waitDOrders.indexOf(order);
-            this.waitDOrders.splice(idx, 1);
+            this.fetchOrders();
             return;
           }
         });

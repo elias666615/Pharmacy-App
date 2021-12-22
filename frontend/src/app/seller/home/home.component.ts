@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, SubCategory, Type } from '../../shared/models/productmodels';
+import { Category, Product, SubCategory, Type } from '../../shared/models/productmodels';
 import { FormControl } from '@angular/forms';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { LookupsService } from 'src/app/shared/services/lookups.service';
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   productToUpdate: Product | undefined;
 
   products: Product[] = []; 
-  subcategories: SubCategory[] = [];
+  categories: Category[] = [];
   types: Type[] = [];
 
   filteredProducts: Product[] = [];
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchLookups() {
-    this.lookupsService.fetchSubCategories().subscribe((data: SubCategory[]) => this.subcategories = data);
+    this.lookupsService.fetchCategories().subscribe((data: Category[]) => this.categories = data);
     this.lookupsService.fetchTypes().subscribe((data: Type[]) => this.types = data);
   }
 

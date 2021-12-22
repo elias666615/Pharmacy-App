@@ -20,4 +20,35 @@
         <p class="total">Total: {{ total }} LBP</p>
     </div> 
   </div>
+  <div *ngIf="!ratingDisabled" class="add-rating-container">
+    <button mat-flat-button [disabled]="submitDisabled" (click)="submitRating()">Submit</button>
+    <p>Rate and review this product</p>
+    <app-star-rating (rated)="onRated($event)" [enabled]="true"></app-star-rating>
+    <mat-form-field appearance="standard">
+      <mat-label>Review</mat-label>
+      <textarea [(ngModel)]="review" matInput></textarea>
+    </mat-form-field>
+  </div>
+  <div class="ratings-container">
+    <div class="overall-rating-container">
+      <span class="overall-rating">{{ product.overall_rating }}</span><span>/5</span>
+      <br>
+      <h1>Rating</h1>
+    </div>
+    <div>
+      <div class="reviews-container" *ngFor="let rating of allRatings; last as isLast">
+        <div *ngIf="rating.review != null">
+          <div class="name-rating-container">
+              <span>{{ rating.user_name }}</span>
+              <app-star-rating [rating]="rating.rating_number"></app-star-rating>
+          </div>
+          <br>
+          <div class="review-container">
+            <span>{{ rating.review }}</span>
+          </div>
+        </div>
+        <div *ngIf="!isLast" class="divider"></div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -19,7 +19,7 @@
             <mat-label>Category</mat-label>
             <mat-select [(ngModel)]="categoryValue" (ngModelChange)="fetchProducts()">
                 <mat-option value="">All</mat-option>
-                <mat-option *ngFor="let category of subcategories" [value]="category.id">{{ category.description }}</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.description }}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="standard" class="select_field">
@@ -43,12 +43,12 @@
 
 <div [@drawerOpenClose]="add_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
     <div class="drawer_body">
-        <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="subcategories" (productAdded)="addProduct($event)" (drawerClosed)="add_drawer_open=false"></app-add-product>
+        <app-add-product *ngIf="add_drawer_open" [types]="types" [allCategories]="categories" (productAdded)="addProduct($event)" (drawerClosed)="add_drawer_open=false"></app-add-product>
     </div>
 </div>
 
 <div [@drawerOpenClose]="update_drawer_open? 'drawer-open' : 'drawer-closed'" class="drawer">
     <div class="drawer_body">
-        <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="subcategories" [product]="productToUpdate!" (drawerClosed)="update_drawer_open=false"></app-update-product>
+        <app-update-product *ngIf="update_drawer_open" (productUpdated)="productUpdated($event)" [types]="types" [allCategories]="categories" [product]="productToUpdate!" (drawerClosed)="update_drawer_open=false"></app-update-product>
     </div>
 </div>

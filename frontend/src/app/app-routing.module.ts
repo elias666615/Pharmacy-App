@@ -11,6 +11,7 @@ import { BuyerNavigationComponent } from './buyer/buyer-navigation/buyer-navigat
 import { BuyerHomeComponent } from './buyer/buyer-home/buyer-home.component';
 import { BuyerOrdersComponent } from './buyer/buyer-orders/buyer-orders.component';
 import { ProductDetailsComponent } from './shared/product-details/product-details.component';
+import { ProductSearchComponent } from './buyer/product-search/product-search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: BuyerHomeComponent },
       { path: 'orders', component: BuyerOrdersComponent },
+      { path: 'search/:search', component: ProductSearchComponent},
       { path: 'product/:id', component: ProductDetailsComponent },
     ] 
   },

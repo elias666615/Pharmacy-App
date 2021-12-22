@@ -2,7 +2,8 @@
     <img *ngIf="product.image != null" class="product_image" mat-card-image src="{{ baseUrl + product.image }}" alt="product image">
     <img *ngIf="product.image == null" class="product_image" mat-card-image src="../../../assets/images/default.jpg" alt="default image">
     <mat-card-content>
-      <mat-card-title class="product-name">{{ product.name }}</mat-card-title>
+      <mat-card-title 
+        class="product-name" >{{ product.name }}</mat-card-title>
       <mat-card-subtitle class="product-price">
         <span *ngIf="price" class="discounted_price">{{ price }} LBP</span>
         <br>
@@ -11,7 +12,7 @@
       </mat-card-subtitle>
       <div style="display: grid;grid-template-columns: 92% 8%;">
         <div>
-          <app-star-rating [rating]="product.rating"></app-star-rating>
+          <app-star-rating [rating]="product.overall_rating"></app-star-rating>
         </div>
         <div>
           <mat-icon aria-hidden="false" aria-label="icon" class="more-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>

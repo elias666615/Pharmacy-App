@@ -14,7 +14,7 @@ export class MultipurposePopupComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<MultipurposePopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {name: String, action:'delete_p'},
+    @Inject(MAT_DIALOG_DATA) public data: {name: String, action: String},
   ) { }
 
   ngOnInit(): void {

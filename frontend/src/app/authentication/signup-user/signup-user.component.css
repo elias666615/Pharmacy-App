@@ -1,6 +1,8 @@
 .container {
-    padding: 5% 10% 0 10%;
+    padding: 2% 8.5% 0 10%;
     height: 90%;
+    overflow-y: scroll;
+    margin: 3% 1.5% 1% 0;
 }
 
 .formField {
@@ -15,7 +17,7 @@
     padding: 2% 0 2% 0;
     font-family: 'IBM Plex Sans Hebrew', sans-serif;
     margin-top: 7%;
-    background-color: rgb(255, 37, 37);
+    background-color: #5CDB95;
     color: white;
 }
 

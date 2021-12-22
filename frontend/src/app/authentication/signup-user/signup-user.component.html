@@ -7,6 +7,7 @@
         matInput
         formControlName="firstname"
       />
+      <mat-error *ngIf="signupForm.controls['firstname'].hasError('required')">First name is required</mat-error>
     </mat-form-field>
     <mat-form-field class="formField" appearance="standard">
       <mat-label>Last Name</mat-label>
@@ -15,6 +16,7 @@
         matInput
         formControlName="lastname"
       />
+      <mat-error *ngIf="signupForm.controls['lastname'].hasError('required')">Last name is required</mat-error>
     </mat-form-field>
     <mat-form-field class="formField" appearance="standard">
       <mat-label>Phone Number</mat-label>
@@ -23,6 +25,8 @@
         matInput
         formControlName="phone"
       />
+      <mat-error *ngIf="signupForm.controls['phone'].hasError('required')">Phone number is required</mat-error>
+      <mat-error *ngIf="signupForm.controls['phone'].hasError('pattern')">Phone number must only contain numbers</mat-error>
     </mat-form-field>
     <mat-form-field class="formField" appearance="standard">
       <mat-label>Email</mat-label>
@@ -32,6 +36,8 @@
         placeholder="email@example.com"
         formControlName="email"
       />
+      <mat-error *ngIf="signupForm.controls['email'].hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="signupForm.controls['email'].hasError('email')">Wrong email format</mat-error>
     </mat-form-field>
     <mat-form-field class="formField" appearance="standard">
       <mat-label>Password</mat-label>
@@ -41,6 +47,7 @@
         formControlName="password"
         type="password"
       />
+      <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
     </mat-form-field>
     <mat-form-field class="formField" appearance="standard">
       <mat-label>Confirm Password</mat-label>
@@ -50,6 +57,38 @@
         formControlName="confirmpassword"
         type="password"
       />
+      
+    </mat-form-field>
+    <mat-error *ngIf="!passwordsMatch">Passwords do not match</mat-error>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>City</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="city"
+        type="text"
+      />
+      <mat-error *ngIf="signupForm.controls['city'].hasError('required')">City is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Street</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="street"
+        type="text"
+      />
+      <mat-error *ngIf="signupForm.controls['street'].hasError('required')">Street is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="formField" appearance="standard">
+      <mat-label>Location details</mat-label>
+      <input
+        (ngModelChange)="checkIfDisabled()"
+        matInput
+        formControlName="location"
+        type="text"
+      />
+      <mat-error *ngIf="signupForm.controls['location'].hasError('required')">Location is required</mat-error>
     </mat-form-field>
   </form>
   <div>

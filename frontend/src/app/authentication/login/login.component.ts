@@ -11,10 +11,10 @@ import { UserDataManager } from '../services/userDataManager';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loginFailed: boolean = false;
   StayLoggedIn: boolean = false;
   loginForm = this.fb.group({
-    email: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
 
   });
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/buyer/home']);
           }
         });
-      });
+      }, (error: Error) => {this.loginFailed = true;});
     }
   }
 }
